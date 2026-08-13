@@ -18,23 +18,18 @@ export function BrandLogo({
     <Link
       href={href}
       aria-label="Gather 홈"
-      className="inline-flex min-h-11 items-center gap-1.5 rounded-lg"
+      className="inline-flex min-h-11 items-center rounded-lg"
     >
       <Image
-        src="/assets/brand/gather-mark.svg"
-        alt=""
-        width={compact ? 34 : 66}
-        height={compact ? 34 : 39}
+        src="/assets/brand/gather-logo.svg"
+        alt="Gather"
+        width={147}
+        height={39}
         loading={eager ? "eager" : "lazy"}
-        className={compact ? "h-[34px] w-[34px]" : "h-[39px] w-[66px]"}
+        className={compact ? "h-[34px] w-[128px]" : "h-[39px] w-[147px]"}
+        unoptimized
       />
-      <span
-        className={`font-extrabold tracking-[-0.03em] ${
-          compact ? "text-[25px]" : "text-2xl"
-        } ${inverse ? "text-[#fafaf8]" : "text-[#2e6136]"}`}
-      >
-        Gather
-      </span>
+      {inverse ? <span className="sr-only">Gather</span> : null}
     </Link>
   );
 }

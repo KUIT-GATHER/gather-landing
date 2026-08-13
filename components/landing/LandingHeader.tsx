@@ -3,7 +3,6 @@
 import { useRef } from "react";
 
 import { BrandLogo } from "@/components/common/BrandLogo";
-import { PageContainer } from "@/components/common/PageContainer";
 
 const navigation = [
   { href: "/#top", label: "서비스 소개", active: false },
@@ -17,8 +16,8 @@ export function LandingHeader() {
   const closeMobileMenu = () => mobileMenuRef.current?.removeAttribute("open");
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-stroke bg-[rgba(250,250,248,.92)] backdrop-blur-xl">
-      <PageContainer className="flex h-full items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-[#e8ebe7] bg-[rgba(250,251,249,.9)] backdrop-blur-xl">
+      <div className="mx-auto flex h-full w-[calc(100%-40px)] max-w-[1236px] items-center justify-between">
         <BrandLogo eager />
         <nav aria-label="주요 메뉴" className="hidden items-center gap-9 md:flex">
           {navigation.map((item) => <a key={item.href} href={item.href} className={`rounded-md text-[15px] transition hover:text-brand ${item.active ? "font-extrabold text-brand-strong" : "text-muted"}`}>{item.label}</a>)}
@@ -29,7 +28,7 @@ export function LandingHeader() {
             {navigation.map((item) => <a key={item.href} href={item.href} onClick={closeMobileMenu} className={`rounded-xl px-4 py-3 text-sm ${item.active ? "font-bold text-brand" : "text-muted"}`}>{item.label}</a>)}
           </nav>
         </details>
-      </PageContainer>
+      </div>
     </header>
   );
 }

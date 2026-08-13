@@ -12,6 +12,7 @@ const features = [
     description: "지역, 날짜, 관심 분야에 맞는 봉사를 한곳에서 찾아보세요.",
     icon: "/assets/icons/search.svg",
     accent: "#00c77b",
+    soft: "#f1fffd",
     preview: (
       <>
         <p className="text-xs text-muted">◉ 서울 · 어린이 돌봄</p>
@@ -31,6 +32,7 @@ const features = [
     description: "혼자가 망설여진다면 비슷한 관심사의 사람들과 함께하세요.",
     icon: "/assets/icons/team.svg",
     accent: "#ffc247",
+    soft: "#fffbf1",
     preview: (
       <>
         <p className="text-xs text-muted">◉ 같이 가실 분!</p>
@@ -47,6 +49,7 @@ const features = [
     description: "신청 일정과 참여 경험을 모아 나만의 기록으로 남겨보세요.",
     icon: "/assets/icons/footprints.svg",
     accent: "#d197d1",
+    soft: "#fff3ff",
     preview: (
       <>
         <p className="text-xs text-muted">◉ 나의 봉사 기록</p>
@@ -61,6 +64,7 @@ const features = [
     description: "봉사 경험과 유용한 정보를 따뜻하게 나눠보세요.",
     icon: "/assets/icons/community.svg",
     accent: "#79baff",
+    soft: "#f1f8ff",
     preview: (
       <>
         <p className="text-xs text-muted">◉ 커뮤니티 인기글</p>
@@ -98,55 +102,62 @@ export default function Home() {
   return (
     <>
       <LandingHeader />
-      <main>
-        <section id="top" className="scroll-mt-24 pt-[var(--header-height)]">
-          <PageContainer className="relative grid min-h-[700px] items-center gap-10 py-20 lg:grid-cols-[1fr_1fr] lg:py-24">
-            <div className="relative z-10 max-w-[590px]">
-              <span className="inline-flex rounded-full bg-brand-soft px-5 py-1.5 text-xs font-semibold text-brand">봉사 커뮤니티 플랫폼</span>
-              <h1 className="mt-5 text-[clamp(2.65rem,5vw,3.375rem)] font-bold leading-[1.15] tracking-[-0.045em]">
+      <main className="overflow-hidden">
+        <section id="top" className="scroll-mt-24 pt-[var(--header-height)] xl:h-[810px]">
+          <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1232px] pb-[60px] pt-[72px] xl:h-[738px] xl:py-0 xl:pt-[132px]">
+            <div className="relative z-10 w-full max-w-[545px]">
+              <span className="inline-flex items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 py-1.5 text-xs font-semibold leading-[16.5px] text-brand">봉사 커뮤니티 플랫폼</span>
+              <h1 className="mt-[34px] text-[clamp(42px,5vw,54px)] font-bold leading-[1.2] tracking-[-0.045em] text-[#0a0a0a] xl:leading-[62px]">
                 하고 싶은 봉사,<br />
                 <span className="text-brand">함께할 사람까지</span>
               </h1>
-              <p className="mt-7 text-[clamp(1rem,2vw,1.25rem)] leading-[1.6] text-muted">
+              <p className="mt-5 text-[17px] leading-[1.65] text-muted sm:text-xl sm:leading-[30px]">
                 흩어진 봉사 공고를 내 일정과 관심사에 맞게 찾고,<br className="hidden sm:block" /> 혼자가 망설여질 때는 함께할 팀을 만나보세요.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a href={siteConfig.volunteerListUrl} className="inline-flex min-h-[64px] items-center justify-center rounded-[18px] bg-brand px-9 text-lg font-bold text-white transition hover:bg-brand-strong">봉사 찾아보기</a>
-                <a href="#volunteer-type" className="inline-flex min-h-[64px] items-center justify-center rounded-[18px] border-2 border-brand bg-white/60 px-7 text-lg font-semibold text-brand transition hover:bg-brand-soft">봉사 유형 알아보기</a>
+                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] bg-brand px-10 text-xl font-bold text-white sm:h-[72px] sm:w-auto sm:min-w-[189px]">봉사 찾아보기</a>
+                <a href="#volunteer-type" className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] border-2 border-brand bg-white/40 text-lg font-semibold text-brand sm:h-[72px] sm:w-[189px]">봉사 유형 알아보기</a>
               </div>
-              <p className="mt-4 text-sm text-subtle">무료로 이용할 수 있어요</p>
+              <p className="mt-6 text-sm leading-[16.5px] text-subtle">무료로 이용할 수 있어요</p>
             </div>
 
-            <div className="relative mx-auto aspect-square w-full max-w-[520px]" aria-hidden="true">
-              <div className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgba(222,245,232,.95)_0%,rgba(222,245,232,.25)_55%,transparent_72%)] blur-2xl" />
-              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={114} height={114} className="absolute left-[8%] top-[26%] w-[22%] rotate-[-8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={108} height={108} className="absolute right-[9%] top-[20%] w-[21%] rotate-[8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={106} height={106} className="absolute bottom-[19%] left-[25%] w-[21%] rotate-[5deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={98} height={112} className="absolute bottom-[26%] right-[16%] w-[19%] rotate-[-7deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
+            <div className="pointer-events-none relative mx-auto mt-5 h-[380px] w-full max-w-[520px] md:h-[460px] xl:absolute xl:inset-0 xl:m-0 xl:h-auto xl:max-w-none" aria-hidden="true">
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(225,248,235,.9)_0%,rgba(225,248,235,.3)_50%,transparent_72%)] blur-[18px] xl:left-[760px] xl:top-[85px] xl:h-[590px] xl:w-[590px]" />
+              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={113} height={113} className="absolute left-[10%] top-[90px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[856px] xl:top-[238px] xl:w-[113px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={96} height={112} className="absolute right-[8%] top-[55px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[1059px] xl:right-auto xl:top-[207px] xl:w-[96px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={107} height={107} className="absolute left-[20%] top-[265px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[854px] xl:top-[478px] xl:w-[107px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={105} height={105} className="absolute right-[15%] top-[215px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[1046px] xl:right-auto xl:top-[421px] xl:w-[105px]" loading="eager" />
             </div>
-            <a href="#features" className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted lg:flex">
+            <a href="#features" className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 text-xs text-muted xl:flex">
               스크롤해서 더 알아보기
-              <span className="flex h-10 w-7 justify-center rounded-full border-2 border-brand pt-2"><span className="h-2 w-1 rounded-full bg-brand" /></span>
+              <span className="flex h-10 w-[27px] justify-center rounded-[15px] border-2 border-brand pt-2 before:h-2 before:w-1 before:rounded-full before:bg-brand" />
             </a>
-          </PageContainer>
+          </div>
         </section>
 
-        <section id="features" className="scroll-mt-24 py-24 lg:py-28">
-          <PageContainer>
-            <SectionHeading eyebrow="주요 기능">봉사를 찾는 순간부터,<br /><span className="text-brand">함께하고 성장하는 순간까지</span></SectionHeading>
-            <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <section id="features" className="scroll-mt-24 py-20 xl:h-[828px] xl:py-0 xl:pt-[31px]">
+          <div className="mx-auto w-[calc(100%-40px)] max-w-[1170px]">
+            <div className="text-center">
+              <span className="inline-flex items-center justify-center rounded-[20px] bg-brand-soft px-5 py-1.5 text-sm font-semibold leading-[16.5px] text-brand">주요 기능</span>
+              <h2 className="mt-4 text-[30px] font-bold leading-[1.35] tracking-[-0.03em] sm:text-4xl sm:leading-[46px]">봉사를 찾는 순간부터,<br /><span className="text-brand">함께하고 성장하는 순간까지</span></h2>
+            </div>
+            <div className="mt-14 grid gap-5 md:grid-cols-2 xl:mt-[121px] xl:grid-cols-[575px_575px] xl:grid-rows-[283.44px_309.44px]">
               {features.map((feature) => (
-                <article key={feature.title} className="rounded-[18px] border border-stroke bg-white p-7 shadow-[0_10px_35px_rgba(24,78,55,.04)] sm:p-8">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full" style={{ backgroundColor: `${feature.accent}1f` }}>
-                    <Image src={feature.icon} alt="" width={28} height={28} className="h-7 w-7" />
-                  </div>
-                  <h3 className="mt-3 text-xl font-bold">{feature.title}</h3>
-                  <p className="mt-2 text-base leading-7 text-muted">{feature.description}</p>
-                  <div className="mt-5 rounded-xl border border-[#eceeeb] bg-[#fafbf9] p-4 text-sm leading-5">{feature.preview}</div>
+                <article key={feature.title} className="min-w-0 rounded-2xl border border-[#d9d9d9] bg-white p-[29px]">
+                  {feature.title === "봉사 찾기" ? (
+                    <Image src={feature.icon} alt="" width={40} height={40} className="h-10 w-10" />
+                  ) : (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-[14px] border border-[var(--feature-accent)] bg-[var(--feature-soft)]" style={{ "--feature-accent": feature.accent, "--feature-soft": feature.soft } as React.CSSProperties}>
+                      <Image src={feature.icon} alt="" width={26} height={26} className="h-[26px] w-[26px] object-contain" />
+                    </div>
+                  )}
+                  <h3 className="mt-3 text-xl font-semibold leading-[25.5px] text-[#101110]">{feature.title}</h3>
+                  <p className="mt-[5px] text-sm font-medium leading-[21.45px] text-[#70746f]">{feature.description}</p>
+                  <div className="mt-5 rounded-[14px] border border-[#edf0ec] bg-transparent p-[13px] text-[13px] leading-[18px] text-[#101110] shadow-[0_1px_3px_rgba(0,0,0,.1),0_1px_2px_rgba(0,0,0,.1)]">{feature.preview}</div>
                 </article>
               ))}
             </div>
-          </PageContainer>
+          </div>
         </section>
 
         <section className="relative overflow-hidden py-24 lg:py-28">
