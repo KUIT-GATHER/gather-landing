@@ -148,7 +148,7 @@ export function VolunteerTest() {
                   width={80}
                   height={80}
                   className="h-20 w-20 object-contain"
-                  priority={session.currentStep === 0}
+                  loading={session.currentStep === 0 ? "eager" : "lazy"}
                 />
                 <span className="mt-5 text-base font-semibold leading-6 tracking-[-0.015em]">
                   {option.label}

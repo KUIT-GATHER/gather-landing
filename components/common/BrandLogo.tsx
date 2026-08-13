@@ -5,14 +5,14 @@ type BrandLogoProps = {
   href?: string;
   compact?: boolean;
   inverse?: boolean;
-  priority?: boolean;
+  eager?: boolean;
 };
 
 export function BrandLogo({
   href = "/",
   compact = false,
   inverse = false,
-  priority = false,
+  eager = false,
 }: BrandLogoProps) {
   return (
     <Link
@@ -25,7 +25,7 @@ export function BrandLogo({
         alt=""
         width={compact ? 34 : 66}
         height={compact ? 34 : 39}
-        priority={priority}
+        loading={eager ? "eager" : "lazy"}
         className={compact ? "h-[34px] w-[34px]" : "h-[39px] w-[66px]"}
       />
       <span

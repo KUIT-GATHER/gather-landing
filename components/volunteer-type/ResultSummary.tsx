@@ -34,7 +34,7 @@ export function ResultSummary({ result, exportMode = false }: ResultSummaryProps
           height={162}
           unoptimized
           className={`${exportMode ? "mt-8 h-[162px] w-[175px]" : "mt-7 h-28 w-32 sm:h-36 sm:w-40"} object-contain`}
-          priority
+          loading="eager"
         />
         <h1 className={`${exportMode ? "mt-6 text-[36px]" : "mt-5 text-[clamp(2rem,5vw,2.5rem)]"} font-bold tracking-[-0.03em]`}>
           {result.name}
@@ -57,4 +57,3 @@ export function ResultSummary({ result, exportMode = false }: ResultSummaryProps
     </section>
   );
 }
-

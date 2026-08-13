@@ -21,10 +21,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Pick<PageProps, "params">): Promise<Metadata> {
   const { type } = await params;
-  if (!isVolunteerType(type)) return { title: "봉사 유형 테스트 | Gather" };
+  if (!isVolunteerType(type)) {
+    return { title: { absolute: "봉사 유형 테스트 | Gather" } };
+  }
   const result = volunteerResultData[type];
   return {
-    title: `${result.name} | Gather 봉사 유형 테스트`,
+    title: { absolute: `${result.name} | Gather 봉사 유형 테스트` },
     description: result.subtitle,
     openGraph: { title: `${result.name} | Gather 봉사 유형 테스트`, description: result.subtitle },
   };

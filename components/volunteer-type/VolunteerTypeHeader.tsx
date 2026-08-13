@@ -40,9 +40,8 @@ export function VolunteerTypeHeader({ backHref, onBack }: VolunteerTypeHeaderPro
             </Link>
           ) : null}
         </div>
-        <BrandLogo compact priority />
+        <BrandLogo compact eager />
       </PageContainer>
     </header>
   );
 }
-

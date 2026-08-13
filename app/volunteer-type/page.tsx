@@ -5,7 +5,7 @@ import { StartTestButton } from "@/components/volunteer-type/StartTestButton";
 import { VolunteerTypeHeader } from "@/components/volunteer-type/VolunteerTypeHeader";
 
 export const metadata: Metadata = {
-  title: "봉사 유형 테스트 | Gather",
+  title: { absolute: "봉사 유형 테스트 | Gather" },
   description: "6가지 질문으로 나와 잘 맞는 봉사 유형을 알아보세요.",
 };
 
@@ -55,4 +55,3 @@ export default function VolunteerTypePage() {
     </main>
   );
 }
-

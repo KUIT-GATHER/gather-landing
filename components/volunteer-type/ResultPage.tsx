@@ -29,7 +29,7 @@ export function ResultPage({ type, matchCount }: ResultPageProps) {
       </div>
 
       <div aria-hidden="true" className="fixed left-[-10000px] top-0 w-[1233px] bg-background">
-        <div id={`result-export-${type}`} className="w-[1233px] bg-background pb-10">
+        <div id={`result-export-${type}`} className="min-h-[1907px] w-[1233px] bg-background pb-10">
           <ResultSummary result={result} exportMode />
           <ResultContent result={result} matchCount={matchCount} exportMode includeCampaigns={false} />
         </div>

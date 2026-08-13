@@ -119,10 +119,10 @@ export default function Home() {
 
             <div className="relative mx-auto aspect-square w-full max-w-[520px]" aria-hidden="true">
               <div className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgba(222,245,232,.95)_0%,rgba(222,245,232,.25)_55%,transparent_72%)] blur-2xl" />
-              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={114} height={114} className="absolute left-[8%] top-[26%] w-[22%] rotate-[-8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" priority />
-              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={108} height={108} className="absolute right-[9%] top-[20%] w-[21%] rotate-[8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" priority />
-              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={106} height={106} className="absolute bottom-[19%] left-[25%] w-[21%] rotate-[5deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" priority />
-              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={98} height={112} className="absolute bottom-[26%] right-[16%] w-[19%] rotate-[-7deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" priority />
+              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={114} height={114} className="absolute left-[8%] top-[26%] w-[22%] rotate-[-8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={108} height={108} className="absolute right-[9%] top-[20%] w-[21%] rotate-[8deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={106} height={106} className="absolute bottom-[19%] left-[25%] w-[21%] rotate-[5deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={98} height={112} className="absolute bottom-[26%] right-[16%] w-[19%] rotate-[-7deg] drop-shadow-[0_18px_24px_rgba(41,147,105,.14)]" loading="eager" />
             </div>
             <a href="#features" className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted lg:flex">
               스크롤해서 더 알아보기
