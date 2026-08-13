@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/common/BrandLogo";
-import { PageContainer } from "@/components/common/PageContainer";
 import { LandingHeader } from "@/components/landing/LandingHeader";
 import { siteConfig } from "@/config/site";
 
@@ -402,30 +401,79 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white py-24 text-center lg:py-28">
-          <PageContainer className="max-w-[650px]">
-            <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.2] tracking-[-0.05em]">발견은 더 쉽게.<br />참여는 <span className="text-brand">함께.</span><br />경험은 성장으로.</h2>
-            <div className="mx-auto mt-7 h-0.5 w-14 bg-brand" />
-            <p className="mt-8 text-lg leading-8 text-muted">Gather는 공고를 보여주는 데서 멈추지 않습니다.<br />관심 있는 봉사를 발견하고, 함께할 사람을 만나고,<br />나만의 참여 경험을 쌓아갈 수 있도록 돕습니다.</p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">{["발견", "연결", "참여", "성장"].map((item) => <span key={item} className="rounded-full bg-brand-soft px-5 py-2 font-semibold text-brand">{item}</span>)}</div>
-          </PageContainer>
+        <section className="bg-white py-20 text-center xl:h-[724px] xl:py-0">
+          <div className="mx-auto flex w-[calc(100%-40px)] max-w-[473px] flex-col items-center xl:h-full xl:justify-center">
+            <div className="flex flex-col items-center gap-10">
+              <div className="flex flex-col items-center gap-7">
+                <h2 className="text-[clamp(44px,5vw,72px)] font-bold leading-[1.2] tracking-[-0.04em] text-[#101110] xl:leading-[normal] xl:tracking-normal">
+                  발견은 더 쉽게.<br />
+                  참여는 <span className="text-brand">함께.</span><br />
+                  경험은 <span className="text-brand">성장</span>으로.
+                </h2>
+                <span className="h-[5px] w-14 rounded-full bg-brand" aria-hidden="true" />
+              </div>
+              <p className="text-lg leading-8 text-[#5e5e5d] sm:text-2xl sm:leading-normal">
+                Gather는 공고를 보여주는 데서 멈추지 않습니다.<br />
+                관심 있는 봉사를 발견하고, 함께할 사람을 만나고,<br />
+                나만의 참여 경험을 쌓아갈 수 있도록 돕습니다.
+              </p>
+            </div>
+            <div className="mt-[60px] flex flex-wrap justify-center gap-4">
+              {[
+                ["발견", "border-[#82d3ca] bg-[#f1fffd] text-[#00c77b]"],
+                ["연결", "border-[#a6ccf4] bg-[#f1f8ff] text-[#398ed8]"],
+                ["참여", "border-[#d197d1] bg-[#fff3ff] text-[#bf62bb]"],
+                ["성장", "border-[#fade9e] bg-[#fffbf1] text-[#db9c16]"],
+              ].map(([item, style]) => (
+                <span key={item} className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </section>
 
-        <section className="py-24 lg:py-28">
-          <PageContainer className="rounded-[24px] bg-[#e1f8e7] px-6 py-14 text-center sm:px-10">
-            <div className="mx-auto flex w-fit gap-2" aria-hidden="true">{["puzzle-companion.svg", "puzzle-knowledge.svg", "puzzle-action.svg", "puzzle-support.svg"].map((src) => <Image key={src} src={`/assets/illustrations/landing/${src}`} alt="" width={46} height={46} className="h-12 w-12" />)}</div>
-            <h2 className="mt-6 text-[clamp(2rem,4vw,2.75rem)] font-bold leading-tight">나와 맞는 첫 봉사를<br /><span className="text-brand">시작해볼까요?</span></h2>
-            <p className="mt-4 text-muted">작은 관심이 새로운 만남과 변화의 시작이 될 수 있어요.</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href={siteConfig.volunteerListUrl} className="inline-flex min-h-[58px] items-center justify-center rounded-2xl bg-brand px-8 font-bold text-white">봉사 찾아보기</a><a href="#volunteer-type" className="inline-flex min-h-[58px] items-center justify-center rounded-2xl border-2 border-brand bg-white px-8 font-semibold text-brand">봉사 유형 알아보기</a></div>
-          </PageContainer>
+        <section className="bg-[#fafaf8] py-16 xl:h-[579px] xl:py-[90px]">
+          <div className="mx-auto flex min-h-[399px] w-[calc(100%-40px)] max-w-[949px] flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(114.284deg,#fafafa_32.074%,#d4fddc_102.25%)] px-5 py-12 text-center sm:px-10 xl:py-0">
+            <div className="flex flex-col items-center gap-9">
+              <div className="flex h-[46px] items-center gap-2" aria-hidden="true">
+                <Image src="/assets/icons/cta-discover.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" />
+                <Image src="/assets/icons/cta-connect.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" />
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#fff3ff]">
+                  <Image src="/assets/icons/cta-participate.svg" alt="" width={26} height={26} className="h-[26px] w-[26px]" />
+                </span>
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#f1f8ff]">
+                  <Image src="/assets/icons/cta-grow.svg" alt="" width={21} height={26} className="h-[26px] w-[21px]" />
+                </span>
+              </div>
+              <div>
+                <h2 className="text-[30px] font-bold leading-[1.3] text-[#101110] sm:text-4xl sm:leading-[normal]">
+                  나와 맞는 첫 봉사를<br />
+                  <span className="text-brand">시작해볼까요?</span>
+                </h2>
+                <p className="mt-3 text-base font-medium leading-normal text-[#18bd77] sm:text-lg">작은 관심이 새로운 만남과 변화의 시작이 될 수 있어요.</p>
+              </div>
+              <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
+                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] bg-brand text-lg font-semibold leading-[22px] text-white transition hover:bg-brand-strong sm:w-[174px]">봉사 찾아보기</a>
+                <a href="#volunteer-type" className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] border-2 border-brand bg-white/40 text-lg font-semibold leading-[22px] text-brand sm:w-[216px]">봉사 유형 알아보기</a>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 
-      <footer className="bg-[#2e6136] py-16 text-[#fafaf8]">
-        <PageContainer className="flex flex-col items-start justify-between gap-10 md:flex-row md:items-center">
-          <div><BrandLogo href="/#top" compact inverse /><p className="mt-2 text-sm text-white/80">함께하는 봉사의 시작</p></div>
-          <nav aria-label="푸터 메뉴" className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium"><a href="#top">서비스 소개</a><a href={siteConfig.github.frontend} target="_blank" rel="noopener noreferrer">Frontend GitHub</a><a href={siteConfig.github.backend} target="_blank" rel="noopener noreferrer">Backend GitHub</a></nav>
-        </PageContainer>
+      <footer className="bg-[#314c36] py-[52px] text-[#fafaf8] xl:h-[249px]">
+        <div className="mx-auto flex h-full w-[calc(100%-40px)] max-w-[1316px] flex-col items-start justify-between gap-10 md:flex-row md:items-center">
+          <div>
+            <BrandLogo href="/#top" inverse />
+            <p className="mt-4 text-lg leading-normal text-[#fafaf8]">함께하는 봉사의 시작</p>
+          </div>
+          <nav aria-label="푸터 메뉴" className="flex flex-wrap gap-x-6 gap-y-3 text-lg font-normal leading-normal">
+            <Link href="/#top">서비스 소개</Link>
+            <a href={siteConfig.github.frontend} target="_blank" rel="noopener noreferrer">Frontend GitHub</a>
+            <a href={siteConfig.github.backend} target="_blank" rel="noopener noreferrer">Backend GitHub</a>
+          </nav>
+        </div>
       </footer>
     </>
   );

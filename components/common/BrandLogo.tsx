@@ -21,15 +21,22 @@ export function BrandLogo({
       className="inline-flex min-h-11 items-center rounded-lg"
     >
       <Image
-        src="/assets/brand/gather-logo.svg"
+        src={inverse
+          ? "/assets/brand/gather-logo-inverse.svg"
+          : "/assets/brand/gather-logo.svg"}
         alt="Gather"
-        width={147}
-        height={39}
+        width={inverse ? 132 : 147}
+        height={inverse ? 34 : 39}
         loading={eager ? "eager" : "lazy"}
-        className={compact ? "h-[34px] w-[128px]" : "h-[39px] w-[147px]"}
+        className={
+          inverse
+            ? "h-[34px] w-[132px]"
+            : compact
+              ? "h-[34px] w-[128px]"
+              : "h-[39px] w-[147px]"
+        }
         unoptimized
       />
-      {inverse ? <span className="sr-only">Gather</span> : null}
     </Link>
   );
 }
