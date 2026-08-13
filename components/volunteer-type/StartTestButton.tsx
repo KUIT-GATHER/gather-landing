@@ -16,10 +16,9 @@ export function StartTestButton() {
     <button
       type="button"
       onClick={startTest}
-      className="mt-10 min-h-16 w-full max-w-[432px] rounded-2xl bg-brand px-7 text-lg font-bold text-white transition hover:bg-brand-strong"
+      className="h-[72px] w-full max-w-[525px] rounded-[40px] bg-brand px-[30px] text-2xl font-semibold leading-[1.4] text-[#fafaf8] transition hover:bg-brand-strong xl:h-[91px] xl:text-[32px]"
     >
       테스트 시작하기
     </button>
   );
 }
-

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/common/BrandLogo";
-import { PageContainer } from "@/components/common/PageContainer";
 
 type VolunteerTypeHeaderProps = {
   backHref?: string;
@@ -11,22 +10,19 @@ type VolunteerTypeHeaderProps = {
 
 export function VolunteerTypeHeader({ backHref, onBack }: VolunteerTypeHeaderProps) {
   const backContent = (
-    <>
-      <Image src="/assets/icons/back.svg" alt="" width={24} height={24} />
-      <span className="hidden sm:inline">뒤로가기</span>
-    </>
+    <Image src="/assets/icons/back.svg" alt="" width={44} height={44} className="h-11 w-11" />
   );
 
   return (
-    <header className="h-[81px] border-b border-[#e6e6e2] bg-background">
-      <PageContainer className="relative flex h-full items-center justify-center">
-        <div className="absolute left-5 sm:left-7 lg:left-8">
+    <header className="h-[81px] bg-background shadow-[0_4px_4px_rgba(0,0,0,0.06)]">
+      <div className="relative mx-auto flex h-full w-[calc(100%-40px)] max-w-[1266px] items-center justify-center">
+        <div className="absolute left-0">
           {onBack ? (
             <button
               type="button"
               onClick={onBack}
               aria-label="이전 화면으로 이동"
-              className="flex min-h-11 items-center gap-2 rounded-lg px-1 text-sm font-semibold text-muted"
+              className="flex h-11 w-11 items-center justify-center rounded-lg"
             >
               {backContent}
             </button>
@@ -34,14 +30,14 @@ export function VolunteerTypeHeader({ backHref, onBack }: VolunteerTypeHeaderPro
             <Link
               href={backHref}
               aria-label="이전 화면으로 이동"
-              className="flex min-h-11 items-center gap-2 rounded-lg px-1 text-sm font-semibold text-muted"
+              className="flex h-11 w-11 items-center justify-center rounded-lg"
             >
               {backContent}
             </Link>
           ) : null}
         </div>
         <BrandLogo compact eager />
-      </PageContainer>
+      </div>
     </header>
   );
 }

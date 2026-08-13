@@ -9,48 +9,44 @@ export const metadata: Metadata = {
   description: "6가지 질문으로 나와 잘 맞는 봉사 유형을 알아보세요.",
 };
 
-const typeCards = [
-  { label: "따뜻한 동행가", image: "/assets/illustrations/landing/puzzle-companion.svg", tone: "#fff6df" },
-  { label: "지식 나눔가", image: "/assets/illustrations/landing/puzzle-knowledge.svg", tone: "#e8f3ff" },
-  { label: "변화를 만드는 행동가", image: "/assets/illustrations/landing/puzzle-action.svg", tone: "#e7faf7" },
-  { label: "든든한 지원가", image: "/assets/illustrations/landing/puzzle-support.svg", tone: "#f8ebf8" },
-] as const;
-
 export default function VolunteerTypePage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background xl:h-[1172px] xl:min-h-0">
       <VolunteerTypeHeader backHref="/#volunteer-type" />
-      <section className="mx-auto flex w-full max-w-[860px] flex-col items-center px-5 py-12 text-center sm:px-8 sm:py-16">
-        <span className="rounded-full bg-brand-soft px-5 py-2 text-sm font-bold text-brand">
-          Gather 봉사 유형 테스트
-        </span>
-        <h1 className="mt-5 text-[clamp(2rem,5vw,2.75rem)] font-bold leading-[1.25] tracking-[-0.04em]">
-          나와 꼭 맞는 봉사 유형은<br />무엇일까요?
-        </h1>
-        <p className="mt-5 text-base leading-7 text-muted sm:text-lg">
-          6개의 간단한 질문에 답하고, 내가 가장 즐겁게 참여할 수 있는<br className="hidden sm:block" /> 봉사 방식과 활동을 발견해 보세요.
-        </p>
-
-        <div className="mt-10 grid w-full grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {typeCards.map((card) => (
-            <div key={card.label} className="rounded-[18px] border border-[#e6e6e1] bg-white px-3 py-5 shadow-[0_8px_25px_rgba(24,78,55,.04)]">
-              <div className="mx-auto flex aspect-square w-[84px] items-center justify-center rounded-full" style={{ backgroundColor: card.tone }}>
-                <Image src={card.image} alt="" width={70} height={70} className="h-[70px] w-[70px] object-contain" />
-              </div>
-              <p className="mt-3 text-sm font-bold leading-5">{card.label}</p>
-            </div>
-          ))}
+      <section className="relative mx-auto flex w-[calc(100%-40px)] max-w-[1266px] flex-col items-center pb-10 pt-12 text-center xl:h-[1091px] xl:py-0">
+        <div className="relative h-[404px] w-[404px] max-w-full shrink-0 xl:absolute xl:left-[458px] xl:top-[47px]" aria-hidden="true">
+          <Image src="/assets/volunteer-type/intro-glow.svg" alt="" width={450} height={450} className="absolute left-1/2 top-1/2 h-[450px] max-h-[112%] w-[450px] max-w-[112%] -translate-x-1/2 -translate-y-1/2 -scale-y-100 -rotate-[7.24deg]" priority />
+          <div className="absolute left-[76px] top-[118px] grid grid-cols-2 gap-2">
+            <Image src="/assets/volunteer-type/intro-puzzle-green.svg" alt="" width={102} height={102} className="h-[102px] w-[102px]" priority />
+            <Image src="/assets/volunteer-type/intro-puzzle-yellow.svg" alt="" width={102} height={102} className="h-[102px] w-[102px]" priority />
+            <span className="flex h-[102px] w-[102px] items-center rounded-[22px] bg-[#fff3ff] py-[22px] pl-[27px] pr-[18px]">
+              <Image src="/assets/volunteer-type/intro-puzzle-purple.svg" alt="" width={58} height={58} className="h-[58px] w-[58px]" />
+            </span>
+            <span className="flex h-[102px] w-[102px] items-center rounded-[22px] bg-[#f1f8ff] py-[22px] pl-[27px] pr-[18px]">
+              <Image src="/assets/volunteer-type/intro-puzzle-blue.svg" alt="" width={47} height={58} className="h-[58px] w-[47px]" />
+            </span>
+          </div>
         </div>
 
-        <div className="mt-8 flex w-full max-w-[520px] items-center justify-center gap-8 rounded-2xl bg-[#f2f4f1] px-6 py-5 text-sm text-muted sm:gap-14">
-          <span><strong className="block text-base text-foreground">6개</strong>간단한 질문</span>
-          <span className="h-9 w-px bg-[#d4d8d2]" />
-          <span><strong className="block text-base text-foreground">약 60초</strong>예상 소요 시간</span>
-          <span className="h-9 w-px bg-[#d4d8d2]" />
-          <span><strong className="block text-base text-foreground">4가지</strong>봉사 유형</span>
+        <div className="mt-4 flex w-full max-w-[722px] flex-col items-center gap-12 xl:absolute xl:left-[272px] xl:top-[468px] xl:mt-0 xl:gap-[98px]">
+          <div className="flex w-full flex-col items-center gap-6">
+            <h1 className="w-full text-[38px] font-bold leading-normal text-[#0a0a0a] sm:text-[44px] xl:w-[457px] xl:text-[52px]">
+              나는 어떤 방식으로<br />
+              <span className="text-[#18bd77]">세상을 돕는</span> 사람일까?
+            </h1>
+            <p className="text-lg leading-normal text-[#5e5e5d] sm:text-xl xl:text-2xl">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과 추천 활동을 확인해 보세요.</p>
+          </div>
+          <ul className="flex w-[219px] flex-col items-center gap-4 text-2xl leading-normal text-[#5e5e5d]">
+            <li className="flex items-center gap-3 whitespace-nowrap"><Image src="/assets/icons/type-test-clock.svg" alt="" width={24} height={24} className="h-6 w-6" />약 60초 소요</li>
+            <li className="flex items-center gap-3 whitespace-nowrap"><Image src="/assets/icons/type-test-unlock.svg" alt="" width={24} height={24} className="h-6 w-6" />로그인 없이 시작</li>
+            <li className="flex items-center gap-[10px] whitespace-nowrap"><Image src="/assets/icons/type-test-save.svg" alt="" width={24} height={24} className="h-6 w-6" />결과 카드 저장 가능</li>
+          </ul>
         </div>
-        <StartTestButton />
-        <p className="mt-4 text-sm text-subtle">로그인 없이 바로 시작할 수 있어요</p>
+
+        <div className="mt-12 w-full max-w-[525px] xl:absolute xl:left-[376px] xl:top-[914px] xl:mt-0">
+          <StartTestButton />
+        </div>
+        <p className="mt-5 text-xl leading-normal text-[#545454] xl:absolute xl:left-1/2 xl:top-[1029px] xl:mt-0 xl:-translate-x-1/2">약 60초 소요</p>
       </section>
     </main>
   );
