@@ -84,22 +84,6 @@ const interestCategories = [
   { label: "해외", icon: "/assets/icons/category-global.svg", background: "#f1f8ff", border: "#a6ccf4", width: "w-[61px]" },
 ] as const;
 
-const serviceCards = [
-  { icon: "♡", title: "신뢰할 수 있는 봉사 공고", description: "검증된 공고를 바탕으로 안심하고 봉사를 찾아보세요.", tone: "#ffcf5e" },
-  { icon: "⌁", title: "관심사로 이어지는 만남", description: "나와 비슷한 관심을 가진 사람들과 자연스럽게 연결돼요.", tone: "#82d3ca" },
-  { icon: "▣", title: "한눈에 보는 참여 기록", description: "신청 일정과 활동 경험을 놓치지 않고 차곡차곡 모아요.", tone: "#a6ccf4" },
-] as const;
-
-function SectionHeading({ eyebrow, children, description }: { eyebrow: string; children: React.ReactNode; description?: string }) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <span className="inline-flex rounded-full bg-brand-soft px-5 py-1.5 text-sm font-semibold text-brand">{eyebrow}</span>
-      <h2 className="mt-4 text-[clamp(2rem,3vw,2.25rem)] font-bold leading-[1.28] tracking-[-0.03em]">{children}</h2>
-      {description ? <p className="mt-3 text-sm leading-6 text-muted">{description}</p> : null}
-    </div>
-  );
-}
-
 function JourneyStepCard({
   number,
   title,
@@ -327,38 +311,95 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="volunteer-type" className="scroll-mt-24 bg-[linear-gradient(90deg,rgba(222,245,232,.82),rgba(222,245,232,.12))] py-24 lg:py-28">
-          <PageContainer className="grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
-            <div>
-              <span className="inline-flex rounded-full bg-white/70 px-5 py-1.5 text-sm font-semibold text-brand">봉사 유형 테스트</span>
-              <h2 className="mt-5 text-[clamp(2rem,4vw,2.75rem)] font-bold leading-[1.28] tracking-[-0.04em]">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
-              <p className="mt-5 text-lg leading-8 text-muted">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<br className="hidden sm:block" /> 추천 활동을 확인해 보세요.</p>
-              <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted"><span>◷ 약 60초 소요</span><span>♧ 로그인 없이 시작</span><span>▧ 결과 카드 저장 가능</span></div>
-              <Link href="/volunteer-type" className="mt-7 inline-flex min-h-14 items-center justify-center rounded-2xl bg-brand px-8 font-bold text-white transition hover:bg-brand-strong">나의 봉사 유형 알아보기 →</Link>
+        <section id="volunteer-type" className="scroll-mt-24 bg-[linear-gradient(90deg,#e3f7eb_0%,#f5fbf7_68%,#fff_100%)] py-20 xl:h-[609px] xl:py-0">
+          <div className="relative mx-auto flex w-[calc(100%-40px)] max-w-[1232px] flex-col gap-14 xl:h-full xl:block">
+            <div className="xl:absolute xl:left-0 xl:top-[133px] xl:h-[347px] xl:w-[610px]">
+              <div className="h-[226px]">
+                <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#f6fffc] px-5 text-sm font-semibold leading-[16.5px] text-brand">봉사 유형 테스트</span>
+                <div className="mt-2 h-[112px] pt-5">
+                  <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
+                </div>
+                <div className="mt-2 h-[69px] py-2.5">
+                  <p className="text-xl leading-[30px] text-[#5e5e5d]">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<br />추천 활동을 확인해 보세요.</p>
+                </div>
+              </div>
+              <div className="mt-0 flex min-h-[61px] flex-wrap items-center gap-x-4 gap-y-3 text-sm text-[#5e5e5d]">
+                {[
+                  ["/assets/icons/type-test-clock.svg", "약 60초 소요"],
+                  ["/assets/icons/type-test-unlock.svg", "로그인 없이 시작"],
+                  ["/assets/icons/type-test-save.svg", "결과 카드 저장 가능"],
+                ].map(([icon, label]) => <span key={label} className="flex items-center gap-3"><Image src={icon} alt="" width={24} height={24} className="h-6 w-6" />{label}</span>)}
+              </div>
+              <Link href="/volunteer-type" className="inline-flex h-[56px] w-[220px] items-center justify-center rounded-[15px] bg-brand text-[15px] font-bold leading-[22px] text-white transition hover:bg-brand-strong">나의 봉사 유형 알아보기 →</Link>
             </div>
-            <div className="relative mx-auto aspect-square w-full max-w-[390px]" aria-hidden="true">
-              <div className="absolute inset-4 rounded-full bg-white/45 blur-xl" />
-              {[
-                ["puzzle-companion.svg", "left-[4%] top-[16%] -rotate-6"],
-                ["puzzle-knowledge.svg", "right-[2%] top-[10%] rotate-6"],
-                ["puzzle-action.svg", "bottom-[9%] left-[18%] rotate-3"],
-                ["puzzle-support.svg", "bottom-[16%] right-[10%] -rotate-3"],
-              ].map(([src, position]) => <Image key={src} src={`/assets/illustrations/landing/${src}`} alt="" width={120} height={120} className={`absolute w-[35%] ${position}`} />)}
-              <span className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 rotate-3 items-center justify-center rounded-3xl bg-white text-6xl font-black text-brand shadow-xl">?</span>
+
+            <div className="relative mx-auto h-[367px] w-full max-w-[420px] xl:absolute xl:left-[856px] xl:top-[141px]" aria-hidden="true">
+              <Image src="/assets/illustrations/landing/type-test-piece-left.svg" alt="" width={298} height={298} className="absolute left-0 top-[70px] h-auto w-[71%]" />
+              <Image src="/assets/illustrations/landing/type-test-piece-right.svg" alt="" width={298} height={298} className="absolute left-[27%] top-[25px] h-auto w-[71%]" />
+              <Image src="/assets/illustrations/landing/type-test-piece-front.svg" alt="" width={305} height={307} className="absolute left-[22.4%] top-0 z-10 h-auto w-[72.6%]" />
+              <span className="absolute left-[36%] top-[108px] z-20 w-[120px] text-center text-[17px] font-medium leading-9 text-[#b5b5b5]">든든한 지원가</span>
+              <span className="absolute left-[42%] top-[145px] z-20 text-[64px] font-bold leading-none text-brand">?</span>
             </div>
-          </PageContainer>
+          </div>
         </section>
 
-        <section className="py-24 lg:py-28">
-          <PageContainer>
-            <SectionHeading eyebrow="Gather의 약속" description="아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.">Gather가 시작하는 방향</SectionHeading>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {serviceCards.map((card) => <article key={card.title} className="rounded-2xl border border-stroke bg-white p-7"><span className="flex h-11 w-11 items-center justify-center rounded-full text-lg font-bold" style={{ color: card.tone, backgroundColor: `${card.tone}22` }}>{card.icon}</span><h3 className="mt-5 text-lg font-bold">{card.title}</h3><p className="mt-3 text-sm leading-6 text-muted">{card.description}</p></article>)}
+        <section className="py-20 xl:h-[1148px] xl:py-0">
+          <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1170px] xl:h-full">
+            <div className="text-center xl:absolute xl:left-1/2 xl:top-[160px] xl:-translate-x-1/2">
+              <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">이용 방법</span>
+              <h2 className="mt-[23px] whitespace-nowrap text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl">Gather에서 시작하는 방법</h2>
+              <p className="mt-2 text-sm leading-5 text-[#5e5e5d]">아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.</p>
             </div>
-            <div className="mt-8 grid gap-5 rounded-2xl border border-[#dcecdf] bg-white p-5 sm:grid-cols-2">
-              {[{ title: "한강공원 플로깅 🌿", meta: "여의도 · 환경" }, { title: "동화책 같이 읽어요 📖", meta: "강남구 · 문화" }].map((item) => <div key={item.title} className="flex items-center gap-4 rounded-xl bg-[#f8faf7] p-4"><div className="h-16 w-16 rounded-xl bg-[linear-gradient(135deg,#d8f5e5,#9edfc2)]" /><div><h3 className="font-semibold">{item.title}</h3><p className="mt-2 text-sm text-muted">{item.meta}</p></div></div>)}
+
+            <div className="mt-14 grid gap-5 md:grid-cols-3 xl:absolute xl:left-0 xl:top-[374px] xl:mt-0 xl:h-[178px] xl:w-full xl:grid-cols-[376.66px_376.67px_376.66px]">
+              {[
+                ["browse", "무료로 봉사 공고를 둘러볼 수 있어요", "회원가입 없이도 다양한 봉사 공고를 자유롭게 탐색해 보세요."],
+                ["interest", "관심 분야와 지역에 맞춰 탐색할 수 있어요", "내 일정과 위치에 맞는 봉사를 손쉽게 필터링해 찾아보세요."],
+                ["external", "외부 공고는 원문을 확인해 주세요", "외부 공고는 신청 전에 원문과 모집 조건을 꼭 확인해 주세요."],
+              ].map(([kind, title, description]) => (
+                <article key={kind} className="h-[178px] rounded-2xl border border-[#e8ebe7] bg-white p-[25px]">
+                  {kind === "browse" ? <Image src="/assets/icons/explore-browse.svg" alt="" width={48} height={48} /> : (
+                    <span className={`flex h-12 w-12 items-center justify-center rounded-full ${kind === "interest" ? "bg-[#e2f8ee]" : "bg-[#eef1ff]"}`}>
+                      <Image src={kind === "interest" ? "/assets/icons/timeline-interest.svg" : "/assets/icons/explore-external.svg"} alt="" width={kind === "interest" ? 26 : 25} height={kind === "interest" ? 26 : 25} />
+                    </span>
+                  )}
+                  <h3 className="mt-4 text-[15px] font-bold leading-[21px] text-[#101110]">{title}</h3>
+                  <p className="mt-2 text-[13px] leading-[21.45px] text-[#70746f]">{description}</p>
+                </article>
+              ))}
             </div>
-          </PageContainer>
+
+            <div className="mt-8 rounded-2xl border border-[#e8ebe7] bg-white p-[25px] shadow-[0_1px_1.5px_rgba(0,0,0,.1),0_1px_1px_rgba(0,0,0,.1)] xl:absolute xl:left-1/2 xl:top-[600px] xl:mt-0 xl:h-[270px] xl:w-[790px] xl:-translate-x-1/2">
+              <div className="flex h-[18px] items-center justify-between">
+                <strong className="text-base leading-6 text-[#101110]">Gather</strong>
+                <span className="text-xs leading-[18px] text-[#70746f]">봉사 탐색</span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-[5px]">
+                {interestCategories.map((category) => (
+                  <span key={category.label} className="flex h-[31px] items-center justify-center gap-[3px] rounded-[21px] border-[0.7px] px-[11px]" style={{ backgroundColor: category.background, borderColor: category.border }}>
+                    <Image src={category.icon} alt="" width={13} height={13} />
+                    <span className="whitespace-nowrap text-[9.75px] font-semibold leading-[11px] text-[#5e5e5d]">{category.label}</span>
+                  </span>
+                ))}
+              </div>
+              <div className="mt-[17px] grid gap-6 md:grid-cols-2">
+                {[
+                  { title: "한강공원 플로깅 🌿", description: "같이 한강 걸으면서 줍깅해요", meta: <>여의도 · 26.00.00 · <strong className="font-semibold text-[#f76073]">D-4</strong></>, tag: "환경", icon: "/assets/icons/category-environment.svg", image: "/assets/landing/step-volunteer-plogging.png", border: "#82d3ca", background: "#f1fffd" },
+                  { title: "동화책 같이 읽어요 📖", description: "함께 책을 읽으며 따뜻한 시간 나눠요", meta: <>강남구 · 26.00.00</>, tag: "문화", icon: "/assets/icons/category-culture.svg", image: "/assets/landing/step-volunteer-reading.png", border: "#fade9e", background: "#fffbf1" },
+                ].map((item) => (
+                  <div key={item.title} className="relative h-[138px] rounded-xl border border-[#d9d9d9] bg-white p-[15px] pl-[118px]">
+                    <div className="absolute left-[11px] top-[15px] h-[106px] w-[91px] overflow-hidden rounded-[10px]">
+                      <Image src={item.image} alt="" fill sizes="91px" className="object-cover" />
+                    </div>
+                    <h4 className="whitespace-nowrap text-lg font-semibold leading-5 text-[#0a0a0a]">{item.title}</h4>
+                    <p className="mt-2 whitespace-nowrap text-[15px] leading-4 text-[#5e5e5d]">{item.description}</p>
+                    <p className="mt-1 text-sm leading-4 text-[#5e5e5d]">{item.meta}</p>
+                    <span className="mt-[10px] inline-flex h-[23px] items-center gap-1 rounded-[30px] border px-4 text-sm leading-4 text-[#5e5e5d]" style={{ backgroundColor: item.background, borderColor: item.border }}><Image src={item.icon} alt="" width={12} height={12} />{item.tag}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="bg-white py-24 text-center lg:py-28">
