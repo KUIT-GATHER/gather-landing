@@ -18,6 +18,14 @@ import { VolunteerTypeHeader } from "./VolunteerTypeHeader";
 
 const TRANSITION_DELAY = 1_000;
 
+const optionIconSizes: Record<string, { width: number; height: number }> = {
+  "q1-companion": { width: 70, height: 72 },
+  "q1-knowledge": { width: 78, height: 78 },
+  "q3-support": { width: 90, height: 72 },
+  "q4-knowledge": { width: 54, height: 63 },
+  "q6-support": { width: 62, height: 62 },
+};
+
 export function VolunteerTest() {
   const router = useRouter();
   const [session, setSession] = useState<VolunteerTestSession | null>(null);
@@ -99,36 +107,39 @@ export function VolunteerTest() {
   }
 
   const selectedOptionId = session.answers[question.id];
-  const progress = ((session.currentStep + 1) / volunteerQuestions.length) * 100;
-
   return (
-    <main className="min-h-screen bg-background">
-      <VolunteerTypeHeader onBack={moveBack} />
-      <section className="mx-auto flex w-full max-w-[754px] flex-col px-5 pb-16 pt-10 sm:px-8 sm:pt-14">
+    <main className="min-h-screen bg-background xl:h-[912px] xl:min-h-0">
+      <VolunteerTypeHeader
+        onBack={moveBack}
+        currentStep={session.currentStep + 1}
+        totalSteps={volunteerQuestions.length}
+      />
+      <section className="relative mx-auto w-[calc(100%-40px)] max-w-[1266px] pb-16 pt-10 xl:h-[831px] xl:py-0">
         <div
-          className="h-2.5 overflow-hidden rounded-full bg-[#e7e7e3]"
+          className="mx-auto flex w-full max-w-[754px] gap-2 xl:absolute xl:left-1/2 xl:top-[60px] xl:-translate-x-1/2"
           role="progressbar"
           aria-valuemin={1}
           aria-valuemax={volunteerQuestions.length}
           aria-valuenow={session.currentStep + 1}
           aria-label={`질문 ${session.currentStep + 1}/${volunteerQuestions.length}`}
         >
-          <div
-            className="h-full rounded-full bg-brand transition-[width] duration-300"
-            style={{ width: `${progress}%` }}
-          />
+          {volunteerQuestions.map((item, index) => (
+            <span
+              key={item.id}
+              className={`h-[10px] min-w-0 flex-1 rounded-[10px] ${index === session.currentStep ? "bg-brand" : "bg-[#d9d9d9]"}`}
+              aria-hidden="true"
+            />
+          ))}
         </div>
-        <p className="mt-3 text-right text-sm font-medium text-muted" aria-hidden="true">
-          {session.currentStep + 1} / {volunteerQuestions.length}
-        </p>
 
-        <h1 className="mx-auto mt-8 max-w-[680px] text-center text-[clamp(1.75rem,4vw,2rem)] font-bold leading-[1.35] tracking-[-0.03em]">
+        <h1 className="mx-auto mt-10 text-center text-[30px] font-bold leading-[41.6px] text-[#101110] sm:text-4xl xl:absolute xl:left-1/2 xl:top-[110px] xl:mt-0 xl:-translate-x-1/2 xl:whitespace-nowrap">
           {question.title}
         </h1>
 
-        <div className="mt-9 grid gap-4 sm:grid-cols-2 sm:gap-5">
+        <div className="mx-auto mt-12 grid w-full max-w-[660px] grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-6 xl:absolute xl:left-1/2 xl:top-[248px] xl:mt-0 xl:-translate-x-1/2">
           {orderedOptions.map((option) => {
             const selected = option.id === selectedOptionId;
+            const iconSize = optionIconSizes[option.id] ?? { width: 72, height: 72 };
             return (
               <button
                 key={option.id}
@@ -136,30 +147,28 @@ export function VolunteerTest() {
                 onClick={() => selectOption(option.id)}
                 disabled={transitionLocked}
                 aria-pressed={selected}
-                className={`flex min-h-[190px] flex-col items-center justify-center rounded-[18px] border-2 px-6 py-7 text-center transition sm:min-h-[209px] ${
+                className={`flex h-[209px] w-full flex-col items-center justify-center gap-6 rounded-[20px] border-2 p-11 text-center transition md:w-[314px] ${
                   selected
-                    ? "border-brand bg-[#f3fffa] shadow-[0_8px_24px_rgba(0,199,123,.08)]"
-                    : "border-[#e1e1dd] bg-white hover:border-[#9bdfc2] hover:bg-[#fbfffd]"
+                    ? "border-brand bg-[#f3fffa]"
+                    : "border-[#d9d9d9] bg-white hover:border-[#9bdfc2] hover:bg-[#fbfffd]"
                 } disabled:cursor-default`}
               >
                 <Image
                   src={option.icon}
                   alt=""
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
+                  width={iconSize.width}
+                  height={iconSize.height}
+                  className="shrink-0 object-contain"
+                  style={{ width: iconSize.width, height: iconSize.height }}
                   loading={session.currentStep === 0 ? "eager" : "lazy"}
                 />
-                <span className="mt-5 text-base font-semibold leading-6 tracking-[-0.015em]">
+                <span className="max-w-[226px] text-lg font-semibold leading-normal tracking-[-0.03em]">
                   {option.label}
                 </span>
               </button>
             );
           })}
         </div>
-        <p className="mt-7 text-center text-sm text-subtle">
-          나와 가장 가까운 답변을 선택해 주세요
-        </p>
       </section>
     </main>
   );

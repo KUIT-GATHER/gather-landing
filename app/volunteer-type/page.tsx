@@ -15,12 +15,12 @@ export default function VolunteerTypePage() {
       <VolunteerTypeHeader backHref="/#volunteer-type" />
       <section className="relative mx-auto flex w-[calc(100%-40px)] max-w-[1266px] flex-col items-center pb-10 pt-12 text-center xl:h-[1091px] xl:py-0">
         <div className="relative h-[404px] w-[404px] max-w-full shrink-0 xl:absolute xl:left-[458px] xl:top-[47px]" aria-hidden="true">
-          <Image src="/assets/volunteer-type/intro-glow.svg" alt="" width={450} height={450} className="absolute left-1/2 top-1/2 h-[450px] max-h-[112%] w-[450px] max-w-[112%] -translate-x-1/2 -translate-y-1/2 -scale-y-100 -rotate-[7.24deg]" priority />
+          <Image src="/assets/volunteer-type/intro-glow.svg" alt="" width={450} height={450} className="absolute left-1/2 top-1/2 h-[450px] w-[450px] max-w-none -translate-x-1/2 -translate-y-1/2 -scale-y-100 -rotate-[7.24deg]" priority />
           <div className="absolute left-[76px] top-[118px] grid grid-cols-2 gap-2">
             <Image src="/assets/volunteer-type/intro-puzzle-green.svg" alt="" width={102} height={102} className="h-[102px] w-[102px]" priority />
             <Image src="/assets/volunteer-type/intro-puzzle-yellow.svg" alt="" width={102} height={102} className="h-[102px] w-[102px]" priority />
             <span className="flex h-[102px] w-[102px] items-center rounded-[22px] bg-[#fff3ff] py-[22px] pl-[27px] pr-[18px]">
-              <Image src="/assets/volunteer-type/intro-puzzle-purple.svg" alt="" width={58} height={58} className="h-[58px] w-[58px]" />
+              <Image src="/assets/volunteer-type/intro-puzzle-purple.svg" alt="" width={58} height={58} className="h-[58px] w-[58px] max-w-none" />
             </span>
             <span className="flex h-[102px] w-[102px] items-center rounded-[22px] bg-[#f1f8ff] py-[22px] pl-[27px] pr-[18px]">
               <Image src="/assets/volunteer-type/intro-puzzle-blue.svg" alt="" width={47} height={58} className="h-[58px] w-[47px]" />

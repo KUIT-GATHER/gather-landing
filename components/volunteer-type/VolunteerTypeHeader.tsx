@@ -6,9 +6,16 @@ import { BrandLogo } from "@/components/common/BrandLogo";
 type VolunteerTypeHeaderProps = {
   backHref?: string;
   onBack?: () => void;
+  currentStep?: number;
+  totalSteps?: number;
 };
 
-export function VolunteerTypeHeader({ backHref, onBack }: VolunteerTypeHeaderProps) {
+export function VolunteerTypeHeader({
+  backHref,
+  onBack,
+  currentStep,
+  totalSteps,
+}: VolunteerTypeHeaderProps) {
   const backContent = (
     <Image src="/assets/icons/back.svg" alt="" width={44} height={44} className="h-11 w-11" />
   );
@@ -37,6 +44,12 @@ export function VolunteerTypeHeader({ backHref, onBack }: VolunteerTypeHeaderPro
           ) : null}
         </div>
         <BrandLogo compact eager />
+        {currentStep && totalSteps ? (
+          <p className="absolute right-0 text-xl leading-normal tracking-[-0.03em]" aria-hidden="true">
+            <span className="text-[#5e5e5d]">{currentStep}</span>{" "}
+            <span className="text-[#a4a4a4]">/ {totalSteps}</span>
+          </p>
+        ) : null}
       </div>
     </header>
   );
