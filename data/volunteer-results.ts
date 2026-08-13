@@ -10,6 +10,9 @@ export interface VolunteerResultData {
   name: string;
   subtitle: string;
   icon: string;
+  iconWidth: number;
+  iconHeight: number;
+  decoration: string;
   background: string;
   accent: string;
   strong: string;
@@ -27,6 +30,9 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     name: "따뜻한 동행가",
     subtitle: "곁에 있는 것만으로도 누군가의 세상이 달라져요",
     icon: "/assets/volunteer-type/results/companion.svg",
+    iconWidth: 175,
+    iconHeight: 162,
+    decoration: "/assets/volunteer-type/result-decoration-circle.svg",
     background: "#fffbf1",
     accent: "#ffd166",
     strong: "#ffb300",
@@ -50,9 +56,12 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     name: "지식 나눔가",
     subtitle: "배움을 나눌 때, 둘 다 성장해요",
     icon: "/assets/volunteer-type/results/knowledge.svg",
+    iconWidth: 162,
+    iconHeight: 162,
+    decoration: "/assets/volunteer-type/result-decoration-knowledge.svg",
     background: "#e4f1ff",
     accent: "#79baff",
-    strong: "#3d8ddf",
+    strong: "#79baff",
     keywords: ["성장 지향", "지식의 민주화", "가능성 확장"],
     reason: "당신은 배움과 가능성을 넓히는 것에 가장 큰 보람을 느끼고, 지식과 경험을 설명하는 방식이 자연스러우며, 소규모 팀과 협력하는 환경을 선호하고, 상대의 이해를 돕고 새로운 관점을 제시하며 함께 성장하는 과정에서 큰 성취감을 느낍니다. 또한 서로에게 긍정적인 영향을 주고받는 협력적인 환경에서 가장 높은 몰입과 만족을 경험합니다.",
     strengths: ["자신의 경험과 지식을 쉽게 설명하는 전달력", "상대의 수준에 맞게 접근하는 유연한 교육 방식", "성장을 함께 목격하는 데서 오는 깊은 보람"],
@@ -73,9 +82,12 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     name: "변화를 만드는 행동가",
     subtitle: "두 손으로 세상을 조금씩 더 나은 방향으로 만들어가요",
     icon: "/assets/volunteer-type/results/action.svg",
+    iconWidth: 138,
+    iconHeight: 138,
+    decoration: "/assets/volunteer-type/result-decoration-action.svg",
     background: "#f1fffd",
     accent: "#82d3ca",
-    strong: "#00a895",
+    strong: "#00d2ba",
     keywords: ["즉각적 행동", "눈에 보이는 변화", "공동체 환경 개선"],
     reason: "당신은 동네와 환경을 직접 바꾸는 것에 가장 큰 보람을 느끼고, 현장에서 몸을 움직이는 방식이 자연스러우며, 많은 사람과 활기차게 활동하는 환경을 선호하고, 직접 행동으로 변화를 만들어내며 사람들과 함께 지역사회에 긍정적인 영향을 전하는 과정에서 큰 성취감을 느낍니다.",
     strengths: ["빠른 실행력과 현장 추진력", "많은 사람들과 에너지를 나누는 활발함", "결과물이 눈에 보일 때 가장 큰 보람을 느끼는 동기"],
@@ -96,9 +108,12 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     name: "든든한 지원가",
     subtitle: "보이지 않는 곳에서 모든 것을 가능하게 해요",
     icon: "/assets/volunteer-type/results/support.svg",
+    iconWidth: 162,
+    iconHeight: 162,
+    decoration: "/assets/volunteer-type/result-decoration-support.svg",
     background: "#fff3ff",
     accent: "#d197d1",
-    strong: "#a85fa8",
+    strong: "#d197d1",
     keywords: ["운영 안정성", "체계적 지원", "지속 가능한 기여"],
     reason: "당신은 보이지 않는 곳에서 활동을 지원하는 것에 가장 큰 보람을 느끼고, 자료와 일정을 꼼꼼하게 정리하는 방식이 자연스러우며, 혼자 또는 비대면으로 집중하는 환경을 선호하고, 체계적인 준비와 세심한 관리로 팀이 원활하게 움직일 수 있도록 뒷받침하는 과정에서 큰 성취감과 보람을 느낍니다.",
     strengths: ["체계적으로 계획을 세우고 실행하는 운영 능력", "디지털 도구와 콘텐츠를 활용한 비대면 기여", "꾸준하고 유연한 참여로 조직의 기반을 지지"],

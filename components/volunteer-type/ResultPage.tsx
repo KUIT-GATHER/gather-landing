@@ -15,21 +15,24 @@ export function ResultPage({ type, matchCount }: ResultPageProps) {
   const result = volunteerResultData[type];
 
   return (
-    <main className="min-h-screen bg-background" style={{ "--result-accent": result.accent } as React.CSSProperties}>
+    <main
+      className="min-h-screen bg-background"
+      style={{
+        "--result-accent": result.accent,
+        "--result-background": result.background,
+        "--result-strong": result.strong,
+      } as React.CSSProperties}
+    >
       <VolunteerTypeHeader backHref="/volunteer-type" />
-      <div className="mx-auto w-full max-w-[1232px] px-5 py-10 sm:px-8 sm:py-14">
+      <div className="mx-auto w-[calc(100%-40px)] max-w-[1233px] pb-20 pt-10 xl:pb-[500px] xl:pt-[60px]">
         <ResultSummary result={result} />
         <ResultContent result={result} matchCount={matchCount} />
-
         <Recommendations result={result} />
-
-        <div className="mt-6 space-y-6">
-          <ResultActions type={type} />
-        </div>
+        <ResultActions type={type} />
       </div>
 
       <div aria-hidden="true" className="fixed left-[-10000px] top-0 w-[1233px] bg-background">
-        <div id={`result-export-${type}`} className="min-h-[1907px] w-[1233px] bg-background pb-10">
+        <div id={`result-export-${type}`} className="h-[1907px] w-[1233px] overflow-hidden bg-background">
           <ResultSummary result={result} exportMode />
           <ResultContent result={result} matchCount={matchCount} exportMode includeCampaigns={false} />
         </div>

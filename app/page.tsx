@@ -220,7 +220,7 @@ export default function Home() {
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1232px] xl:h-full">
             <div className="text-center xl:absolute xl:left-1/2 xl:top-[72px] xl:-translate-x-1/2">
               <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">이용 방법</span>
-              <h2 className="mt-[23px] whitespace-nowrap text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl">Gather에서 시작하는 방법</h2>
+              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap">Gather에서 시작하는 방법</h2>
             </div>
 
             <div className="mt-14 flex flex-col items-center gap-8 xl:mt-0 xl:block">
@@ -346,7 +346,7 @@ export default function Home() {
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1170px] xl:h-full">
             <div className="text-center xl:absolute xl:left-1/2 xl:top-[160px] xl:-translate-x-1/2">
               <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">이용 방법</span>
-              <h2 className="mt-[23px] whitespace-nowrap text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl">Gather에서 시작하는 방법</h2>
+              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap">Gather에서 시작하는 방법</h2>
               <p className="mt-2 text-sm leading-5 text-[#5e5e5d]">아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.</p>
             </div>
 
@@ -386,12 +386,12 @@ export default function Home() {
                   { title: "한강공원 플로깅 🌿", description: "같이 한강 걸으면서 줍깅해요", meta: <>여의도 · 26.00.00 · <strong className="font-semibold text-[#f76073]">D-4</strong></>, tag: "환경", icon: "/assets/icons/category-environment.svg", image: "/assets/landing/step-volunteer-plogging.png", border: "#82d3ca", background: "#f1fffd" },
                   { title: "동화책 같이 읽어요 📖", description: "함께 책을 읽으며 따뜻한 시간 나눠요", meta: <>강남구 · 26.00.00</>, tag: "문화", icon: "/assets/icons/category-culture.svg", image: "/assets/landing/step-volunteer-reading.png", border: "#fade9e", background: "#fffbf1" },
                 ].map((item) => (
-                  <div key={item.title} className="relative h-[138px] rounded-xl border border-[#d9d9d9] bg-white p-[15px] pl-[118px]">
-                    <div className="absolute left-[11px] top-[15px] h-[106px] w-[91px] overflow-hidden rounded-[10px]">
+                  <div key={item.title} className="relative min-h-[138px] rounded-xl border border-[#d9d9d9] bg-white p-3 pl-[90px] md:h-[138px] md:p-[15px] md:pl-[118px]">
+                    <div className="absolute left-[9px] top-3 h-[90px] w-[68px] overflow-hidden rounded-[10px] md:left-[11px] md:top-[15px] md:h-[106px] md:w-[91px]">
                       <Image src={item.image} alt="" fill sizes="91px" className="object-cover" />
                     </div>
-                    <h4 className="whitespace-nowrap text-lg font-semibold leading-5 text-[#0a0a0a]">{item.title}</h4>
-                    <p className="mt-2 whitespace-nowrap text-[15px] leading-4 text-[#5e5e5d]">{item.description}</p>
+                    <h4 className="text-base font-semibold leading-5 text-[#0a0a0a] md:whitespace-nowrap md:text-lg">{item.title}</h4>
+                    <p className="mt-2 text-sm leading-4 text-[#5e5e5d] md:whitespace-nowrap md:text-[15px]">{item.description}</p>
                     <p className="mt-1 text-sm leading-4 text-[#5e5e5d]">{item.meta}</p>
                     <span className="mt-[10px] inline-flex h-[23px] items-center gap-1 rounded-[30px] border px-4 text-sm leading-4 text-[#5e5e5d]" style={{ backgroundColor: item.background, borderColor: item.border }}><Image src={item.icon} alt="" width={12} height={12} />{item.tag}</span>
                   </div>
