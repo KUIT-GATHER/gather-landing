@@ -14,12 +14,12 @@ const features = [
     soft: "#f1fffd",
     preview: (
       <>
-        <p className="text-xs text-muted">◉ 서울 · 어린이 돌봄</p>
-        <div className="mt-3 flex items-center justify-between">
+        <p className="text-[13px] font-normal leading-[16.5px] text-[#7b817b]">◉ 서울 · 어린이 돌봄</p>
+        <div className="mt-2 flex items-center justify-between font-semibold">
           <span>마포구 아동 독서 지도</span>
           <span className="font-semibold text-brand">모집중</span>
         </div>
-        <div className="mt-2 flex items-center justify-between">
+        <div className="mt-2 flex items-center justify-between font-semibold">
           <span>중랑구 방과후 멘토링</span>
           <span className="font-semibold text-brand">모집중</span>
         </div>
@@ -34,12 +34,12 @@ const features = [
     soft: "#fffbf1",
     preview: (
       <>
-        <p className="text-xs text-muted">◉ 같이 가실 분!</p>
-        <div className="mt-3 flex items-center gap-2">
-          <span className="rounded-full bg-[#fff3d6] px-3 py-1">김 이 박</span>
-          <span className="text-muted">+3</span>
+        <p className="text-[13px] font-normal leading-[16.5px] text-[#7b817b]">◉ 같이 가실 분!</p>
+        <div className="mt-2 flex h-[18px] items-center gap-2">
+          <span className="inline-flex h-[23px] min-w-[49px] items-center justify-center rounded-full bg-brand px-2 text-[10px] font-bold leading-[15px] text-white">김 이 박</span>
+          <span className="font-semibold text-[#101110]">+3</span>
         </div>
-        <p className="mt-2">환경 정화 봉사 팀 (3/5)</p>
+        <p className="mt-2 font-semibold">환경 정화 봉사 팀 (3/5)</p>
       </>
     ),
   },
@@ -51,10 +51,10 @@ const features = [
     soft: "#fff3ff",
     preview: (
       <>
-        <p className="text-xs text-muted">◉ 나의 봉사 기록</p>
-        <div className="mt-3 flex justify-between"><span>● 아동 독서 지도</span><span>+2h</span></div>
-        <div className="mt-2 flex justify-between"><span>● 환경 정화 활동</span><span>+3h</span></div>
-        <p className="mt-2 font-semibold">총 12.5h 기록됨</p>
+        <p className="text-[13px] font-normal leading-[16.5px] text-[#7b817b]">◉ 나의 봉사 기록</p>
+        <div className="mt-2 flex justify-between font-semibold"><span>● 아동 독서 지도</span><span className="text-point">+2h</span></div>
+        <div className="mt-2 flex justify-between font-semibold"><span>● 환경 정화 활동</span><span className="text-point">+3h</span></div>
+        <p className="mt-2 font-semibold">총 <span className="text-point">12.5h</span> 기록됨</p>
       </>
     ),
   },
@@ -66,9 +66,9 @@ const features = [
     soft: "#f1f8ff",
     preview: (
       <>
-        <p className="text-xs text-muted">◉ 커뮤니티 인기글</p>
-        <p className="mt-3">▢ 처음 봉사 후기 공유합니다</p>
-        <p className="mt-2">▢ 어르신 말벗 봉사 팁</p>
+        <p className="text-[13px] font-normal leading-[16.5px] text-[#7b817b]">◉ 커뮤니티 인기글</p>
+        <p className="mt-2 font-semibold">▢ 처음 봉사 후기 공유합니다</p>
+        <p className="mt-2 font-semibold">▢ 어르신 말벗 봉사 팁</p>
       </>
     ),
   },
