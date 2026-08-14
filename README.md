@@ -43,7 +43,6 @@ npm run dev
 
 운영 환경의 `NEXT_PUBLIC_SITE_URL`은 `https://intro.gathernow.kr`로 설정합니다.
 
-추천 공고는 브라우저에서 Gather API를 직접 호출합니다. 배포 전에 랜딩 도메인에 대한 백엔드 CORS 허용 여부를 확인해야 합니다.
 
 ## 명령어
 
@@ -65,7 +64,6 @@ npm run dev
 | `/volunteer-type/test` | 봉사 유형 테스트 |
 | `/volunteer-type/result/[type]` | 봉사 유형 결과 |
 
-결과 유형 키는 `companion`, `knowledge`, `action`, `support`입니다.
 
 ## 디렉터리 구조
 
@@ -81,5 +79,3 @@ data/                 # 질문과 결과 데이터
 lib/                  # 세션, 결과 계산, API 유틸리티
 public/assets/        # 폰트, 이미지, SVG
 ```
-
-UI를 수정할 때는 [Gather Figma](https://www.figma.com/design/W1ePrmbkQWAUv6BYK9wwDH/Gather)의 해당 화면을 함께 확인합니다. Figma에서 받은 임시 asset URL은 사용하지 않고 필요한 파일을 `public/assets/`에 저장합니다.
