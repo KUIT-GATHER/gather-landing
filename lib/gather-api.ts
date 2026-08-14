@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import type { VolunteerType } from "@/data/volunteer-test";
 
 export type PostingCategory =
   | "ENVIRONMENT"
@@ -32,6 +33,63 @@ type PostingListResponse = {
   data?: { content?: PostingListItem[] };
 };
 
+const postingCategories = new Set<PostingCategory>([
+  "ENVIRONMENT",
+  "EDUCATION",
+  "CULTURE",
+  "COMMUNITY",
+  "WELFARE",
+  "OVERSEAS",
+]);
+
+export const recommendationCategoryByType: Record<
+  VolunteerType,
+  PostingCategory
+> = {
+  companion: "WELFARE",
+  knowledge: "EDUCATION",
+  action: "ENVIRONMENT",
+  support: "COMMUNITY",
+};
+
+function isNullableString(value: unknown): value is string | null {
+  return value === null || typeof value === "string";
+}
+
+function isNullableInteger(value: unknown): value is number | null {
+  return value === null || Number.isInteger(value);
+}
+
+function isPostingListItem(value: unknown): value is PostingListItem {
+  if (!value || typeof value !== "object") return false;
+  const item = value as Partial<PostingListItem>;
+
+  return (
+    (item.sourceType === "POSTING" || item.sourceType === "MEETING_RECRUIT") &&
+    Number.isInteger(item.id) &&
+    isNullableInteger(item.meetingId) &&
+    (item.sourceType === "POSTING" || item.meetingId !== null) &&
+    typeof item.title === "string" &&
+    isNullableString(item.organizationName) &&
+    isNullableString(item.thumbnailUrl) &&
+    isNullableInteger(item.regionId) &&
+    isNullableString(item.regionName) &&
+    isNullableString(item.place) &&
+    isNullableString(item.activityStartAt) &&
+    isNullableString(item.activityEndAt) &&
+    isNullableString(item.applyDeadlineAt) &&
+    isNullableInteger(item.maxParticipants) &&
+    isNullableInteger(item.appliedCount) &&
+    Array.isArray(item.categories) &&
+    item.categories.every(
+      (category) =>
+        typeof category === "string" &&
+        postingCategories.has(category as PostingCategory),
+    ) &&
+    typeof item.status === "string"
+  );
+}
+
 export function createRecommendationUrl(category: PostingCategory) {
   const url = new URL("/api/v1/postings", siteConfig.apiBaseUrl);
   url.searchParams.set("page", "0");
@@ -48,15 +106,7 @@ export function isPostingListResponse(value: unknown): value is PostingListRespo
   return (
     response.success === true &&
     Array.isArray(response.data?.content) &&
-    response.data.content.every(
-      (item) =>
-        item &&
-        (item.sourceType === "POSTING" || item.sourceType === "MEETING_RECRUIT") &&
-        Number.isInteger(item.id) &&
-        typeof item.title === "string" &&
-        Array.isArray(item.categories) &&
-        (item.sourceType === "POSTING" || Number.isInteger(item.meetingId)),
-    )
+    response.data.content.every(isPostingListItem)
   );
 }
 
@@ -69,6 +119,7 @@ export function getPostingDetailUrl(posting: PostingListItem) {
 
 export function getCategoryExploreUrl(category: PostingCategory) {
   const url = new URL(siteConfig.volunteerListUrl);
+  url.searchParams.set("sort", "latest");
   url.searchParams.set("category", category);
   return url.toString();
 }

@@ -49,13 +49,36 @@ function isValidSession(value: unknown): value is VolunteerTestSession {
   const session = value as Partial<VolunteerTestSession>;
   if (
     !session.answers ||
+    typeof session.answers !== "object" ||
+    Array.isArray(session.answers) ||
     !session.shuffledOptionOrders ||
+    typeof session.shuffledOptionOrders !== "object" ||
+    Array.isArray(session.shuffledOptionOrders) ||
     !Number.isInteger(session.currentStep) ||
     Number(session.currentStep) < 0 ||
     Number(session.currentStep) >= volunteerQuestions.length
   ) {
     return false;
   }
+
+  const questionById = new Map<
+    string,
+    (typeof volunteerQuestions)[number]
+  >(
+    volunteerQuestions.map((question) => [question.id, question]),
+  );
+  const answersAreValid = Object.entries(session.answers).every(
+    ([questionId, optionId]) => {
+      const question = questionById.get(questionId);
+      return (
+        question !== undefined &&
+        typeof optionId === "string" &&
+        question.options.some((option) => option.id === optionId)
+      );
+    },
+  );
+
+  if (!answersAreValid) return false;
 
   return volunteerQuestions.every((question) => {
     const order = session.shuffledOptionOrders?.[question.id];

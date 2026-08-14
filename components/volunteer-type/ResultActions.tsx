@@ -14,6 +14,7 @@ type ResultActionsProps = {
 export function ResultActions({ type }: ResultActionsProps) {
   const router = useRouter();
   const [toast, setToast] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     if (!toast) return;
@@ -31,12 +32,15 @@ export function ResultActions({ type }: ResultActionsProps) {
   };
 
   const saveResult = async () => {
+    if (isSaving) return;
+
     const node = document.getElementById(`result-export-${type}`);
     if (!node) {
       setToast("결과 카드를 저장하지 못했어요. 다시 시도해 주세요.");
       return;
     }
 
+    setIsSaving(true);
     try {
       await document.fonts.ready;
       await Promise.all(
@@ -59,6 +63,8 @@ export function ResultActions({ type }: ResultActionsProps) {
       setToast("결과 카드를 저장했어요.");
     } catch {
       setToast("결과 카드를 저장하지 못했어요. 다시 시도해 주세요.");
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -79,9 +85,9 @@ export function ResultActions({ type }: ResultActionsProps) {
             <Image src="/assets/icons/share.svg" alt="" width={24} height={24} className="h-6 w-6" />
             친구에게 공유
           </button>
-          <button type="button" onClick={saveResult} className="flex min-h-[62px] items-center justify-center gap-4 rounded-[40px] px-6 py-4 text-lg font-bold leading-normal text-[#fafaf8] transition hover:brightness-95 sm:text-xl xl:min-h-[69px] xl:py-5 xl:text-2xl" style={{ backgroundColor: "var(--result-accent)" }}>
+          <button type="button" onClick={saveResult} disabled={isSaving} aria-busy={isSaving} className="flex min-h-[62px] items-center justify-center gap-4 rounded-[40px] px-6 py-4 text-lg font-bold leading-normal text-[#fafaf8] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70 sm:text-xl xl:min-h-[69px] xl:py-5 xl:text-2xl" style={{ backgroundColor: "var(--result-accent)" }}>
             <Image src="/assets/icons/download.svg" alt="" width={24} height={24} className="h-6 w-6" />
-            결과 카드 저장
+            {isSaving ? "저장 중" : "결과 카드 저장"}
           </button>
         </div>
       </section>

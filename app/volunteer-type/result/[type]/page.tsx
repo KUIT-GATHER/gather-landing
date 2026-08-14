@@ -28,7 +28,19 @@ export async function generateMetadata({ params }: Pick<PageProps, "params">): P
   return {
     title: { absolute: `${result.name} | Gather 봉사 유형 테스트` },
     description: result.subtitle,
-    openGraph: { title: `${result.name} | Gather 봉사 유형 테스트`, description: result.subtitle },
+    alternates: { canonical: `/volunteer-type/result/${type}` },
+    openGraph: {
+      title: `${result.name} | Gather 봉사 유형 테스트`,
+      description: result.subtitle,
+      images: [
+        {
+          url: "/og.png",
+          width: 720,
+          height: 380,
+          alt: "Gather - 함께하는 봉사의 시작",
+        },
+      ],
+    },
   };
 }
 
