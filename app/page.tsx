@@ -320,14 +320,14 @@ export default function Home() {
             </div>
 
             <div className="pointer-events-none hidden xl:block" aria-hidden="true">
-              <span className="absolute left-[617px] top-[339px] h-[274px] border-l border-dashed border-[#70746f]" />
-              <span className="absolute left-[617px] top-[661px] h-[310px] border-l border-dashed border-[#70746f]" />
-              <span className="absolute left-[617px] top-[1019px] h-[224px] border-l border-dashed border-[#70746f]" />
+              <Image src="/assets/icons/timeline-line-step-2.svg" alt="" width={2} height={207} className="absolute left-[617px] top-[561px] h-[207px] w-0.5" />
+              <Image src="/assets/icons/timeline-line-step-3.svg" alt="" width={1} height={280} className="absolute left-[616px] top-[956px] h-[280px] w-px" />
+              <Image src="/assets/icons/timeline-line-step-4.svg" alt="" width={1} height={194} className="absolute left-[616px] top-[1228px] h-[194px] w-px" />
               {[
                 ["/assets/icons/timeline-interest.svg", "left-[592px] top-[291px] bg-[#e2f8ee]", 26],
-                ["/assets/icons/timeline-search.svg", "left-[592px] top-[613px] bg-[#fff6dc]", 20],
-                ["/assets/icons/timeline-team.svg", "left-[592px] top-[971px] bg-[#f8efff]", 28],
-                ["/assets/icons/timeline-participate.svg", "left-[592px] top-[1243px] bg-[#eef1ff]", 20],
+                ["/assets/icons/timeline-search.svg", "left-[592px] top-[613px]", 48],
+                ["/assets/icons/timeline-team.svg", "left-[592px] top-[971px]", 48],
+                ["/assets/icons/timeline-participate.svg", "left-[592px] top-[1243px]", 48],
               ].map(([icon, position, size]) => (
                 <span key={String(icon)} className={`absolute z-10 flex h-12 w-12 items-center justify-center rounded-full ${position}`}>
                   <Image src={String(icon)} alt="" width={Number(size)} height={Number(size)} className="object-contain" style={{ width: Number(size), height: Number(size) }} />
