@@ -1,7 +1,10 @@
 const gatherWebUrl =
   process.env.NEXT_PUBLIC_GATHER_WEB_URL ?? "https://gathernow.kr";
+const landingUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const siteConfig = {
+  landingUrl,
   gatherWebUrl,
   volunteerListUrl: `${gatherWebUrl}/volunteers`,
   apiBaseUrl:

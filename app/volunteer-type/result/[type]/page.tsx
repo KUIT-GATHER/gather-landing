@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Pick<PageProps, "params">): P
   return {
     title: { absolute: `${result.name} | Gather 봉사 유형 테스트` },
     description: result.subtitle,
+    alternates: { canonical: `/volunteer-type/result/${type}` },
     openGraph: { title: `${result.name} | Gather 봉사 유형 테스트`, description: result.subtitle },
   };
 }

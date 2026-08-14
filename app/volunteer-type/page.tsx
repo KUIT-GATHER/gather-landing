@@ -7,6 +7,7 @@ import { VolunteerTypeHeader } from "@/components/volunteer-type/VolunteerTypeHe
 export const metadata: Metadata = {
   title: { absolute: "봉사 유형 테스트 | Gather" },
   description: "6가지 질문으로 나와 잘 맞는 봉사 유형을 알아보세요.",
+  alternates: { canonical: "/volunteer-type" },
 };
 
 export default function VolunteerTypePage() {
