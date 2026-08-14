@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { BrandLogo } from "@/components/common/BrandLogo";
 import { LandingHeader } from "@/components/landing/LandingHeader";
+import { LandingMotion } from "@/components/motion/LandingMotion";
 import { siteConfig } from "@/config/site";
 
 const features = [
@@ -97,7 +98,11 @@ function JourneyStepCard({
   children?: React.ReactNode;
 }) {
   return (
-    <article className={`w-full shrink-0 rounded-2xl border border-[#e8ebe7] bg-white p-[25px] ${className}`}>
+    <article
+      className={`w-full shrink-0 rounded-2xl border border-[#e8ebe7] bg-white p-[25px] ${className}`}
+      data-motion="journey-step"
+      data-journey-side={number === "01" || number === "03" ? "right" : "left"}
+    >
       <div className="h-6 pt-[5px] text-[10px] font-black leading-[15px] text-brand">STEP {number}</div>
       <div className="h-8 pt-2">
         <h3 className="text-base font-bold leading-6 text-[#101110]">{title}</h3>
@@ -114,23 +119,24 @@ export default function Home() {
   return (
     <>
       <LandingHeader />
-      <main className="overflow-hidden">
-        <section id="top" className="scroll-mt-24 pt-header xl:h-[810px]">
+      <LandingMotion />
+      <main className="overflow-hidden" data-motion-root>
+        <section id="top" className="scroll-mt-24 pt-header xl:h-[810px]" data-motion-section="hero">
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1232px] pb-[60px] pt-[72px] xl:h-[738px] xl:py-0 xl:pt-[132px]">
             <div className="relative z-10 w-full max-w-[545px]">
-              <span className="inline-flex items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 py-1.5 text-xs font-semibold leading-[16.5px] text-brand">봉사 커뮤니티 플랫폼</span>
+              <span className="inline-flex items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 py-1.5 text-xs font-semibold leading-[16.5px] text-brand" data-motion="hero-badge">봉사 커뮤니티 플랫폼</span>
               <h1 className="mt-[34px] text-[clamp(42px,5vw,54px)] font-bold leading-[1.2] tracking-[-0.045em] text-[#0a0a0a] xl:leading-[62px]">
-                하고 싶은 봉사,<br />
-                <span className="text-brand">함께할 사람까지</span>
+                <span className="block overflow-hidden"><span className="block" data-motion="hero-heading-line">하고 싶은 봉사,</span></span>
+                <span className="block overflow-hidden"><span className="block text-brand" data-motion="hero-heading-line">함께할 사람까지</span></span>
               </h1>
-              <p className="mt-5 text-[17px] leading-[1.65] text-muted sm:text-xl sm:leading-[30px]">
+              <p className="mt-5 text-[17px] leading-[1.65] text-muted sm:text-xl sm:leading-[30px]" data-motion="hero-description">
                 흩어진 봉사 공고를 내 일정과 관심사에 맞게 찾고,<br className="hidden sm:block" /> 혼자가 망설여질 때는 함께할 팀을 만나보세요.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] bg-brand px-10 text-xl font-bold text-white sm:h-[72px] sm:w-auto sm:min-w-[189px]">봉사 찾아보기</a>
-                <a href="#volunteer-type" className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] border-2 border-brand bg-white/40 text-lg font-semibold text-brand sm:h-[72px] sm:w-[189px]">봉사 유형 알아보기</a>
+                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] bg-brand px-10 text-xl font-bold text-white sm:h-[72px] sm:w-auto sm:min-w-[189px]" data-motion="hero-cta">봉사 찾아보기</a>
+                <a href="#volunteer-type" className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] border-2 border-brand bg-white/40 text-lg font-semibold text-brand sm:h-[72px] sm:w-[189px]" data-motion="hero-cta">봉사 유형 알아보기</a>
               </div>
-              <p className="mt-6 text-sm leading-[16.5px] text-subtle">무료로 이용할 수 있어요</p>
+              <p className="mt-6 text-sm leading-[16.5px] text-subtle" data-motion="hero-footer-copy">무료로 이용할 수 있어요</p>
             </div>
 
             <div className="pointer-events-none relative mx-auto mt-5 h-[380px] w-full max-w-[520px] md:h-[460px] xl:absolute xl:inset-0 xl:m-0 xl:h-auto xl:max-w-none" aria-hidden="true">
@@ -152,27 +158,43 @@ export default function Home() {
                 </div>
               </div>
 
-              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={100} height={100} className="absolute left-[18%] top-[55px] h-auto w-[76px] -rotate-[8deg] xl:left-[862.48px] xl:top-[230.48px] xl:w-[100.119px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={81} height={100} className="absolute right-[14%] top-[40px] h-auto w-[62px] rotate-[9.25deg] xl:left-[1050.53px] xl:right-auto xl:top-[212.75px] xl:w-[81.128px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={100} height={100} className="absolute left-[22%] top-[230px] h-auto w-[78px] -rotate-[86.08deg] xl:left-[857.38px] xl:top-[381.3px] xl:w-[100.212px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={101} height={100} className="absolute right-[16%] top-[210px] h-auto w-[78px] rotate-[2.77deg] xl:left-[1043.87px] xl:right-auto xl:top-[423.35px] xl:w-[100.716px]" loading="eager" />
+              <div className="absolute left-[18%] top-[55px] w-[76px] xl:left-[862.48px] xl:top-[230.48px] xl:w-[100.119px]" data-motion="hero-puzzle-parallax" data-parallax-y="-34">
+                <div data-motion="hero-puzzle" data-motion-x="-18" data-motion-y="16">
+                  <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={100} height={100} className="block h-auto w-full -rotate-[8deg]" loading="eager" />
+                </div>
+              </div>
+              <div className="absolute right-[14%] top-[40px] w-[62px] xl:left-[1050.53px] xl:right-auto xl:top-[212.75px] xl:w-[81.128px]" data-motion="hero-puzzle-parallax" data-parallax-y="-22">
+                <div data-motion="hero-puzzle" data-motion-x="18" data-motion-y="12">
+                  <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={81} height={100} className="block h-auto w-full rotate-[9.25deg]" loading="eager" />
+                </div>
+              </div>
+              <div className="absolute left-[22%] top-[230px] w-[78px] xl:left-[857.38px] xl:top-[381.3px] xl:w-[100.212px]" data-motion="hero-puzzle-parallax" data-parallax-y="-16">
+                <div data-motion="hero-puzzle" data-motion-x="-14" data-motion-y="20">
+                  <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={100} height={100} className="block h-auto w-full -rotate-[86.08deg]" loading="eager" />
+                </div>
+              </div>
+              <div className="absolute right-[16%] top-[210px] w-[78px] xl:left-[1043.87px] xl:right-auto xl:top-[423.35px] xl:w-[100.716px]" data-motion="hero-puzzle-parallax" data-parallax-y="-12">
+                <div data-motion="hero-puzzle" data-motion-x="18" data-motion-y="18">
+                  <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={101} height={100} className="block h-auto w-full rotate-[2.77deg]" loading="eager" />
+                </div>
+              </div>
             </div>
             <a href="#features" className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 text-xs text-muted xl:flex">
               스크롤해서 더 알아보기
-              <span className="flex h-10 w-[27px] justify-center rounded-[15px] border-2 border-brand pt-2 before:h-2 before:w-1 before:rounded-full before:bg-brand" />
+              <span className="flex h-10 w-[27px] justify-center rounded-[15px] border-2 border-brand pt-2"><span className="h-2 w-1 rounded-full bg-brand" data-motion="scroll-indicator-dot" /></span>
             </a>
           </div>
         </section>
 
-        <section id="features" className="relative z-10 scroll-mt-24 py-20 xl:h-[828px] xl:py-0 xl:pt-[31px]">
+        <section id="features" className="relative z-10 scroll-mt-24 py-20 xl:h-[828px] xl:py-0 xl:pt-[31px]" data-motion-section="features">
           <div className="mx-auto w-[calc(100%-40px)] max-w-[1170px]">
             <div className="text-center">
-              <span className="inline-flex items-center justify-center rounded-[20px] bg-brand-soft px-5 py-1.5 text-sm font-semibold leading-[16.5px] text-brand">주요 기능</span>
-              <h2 className="mt-4 text-[30px] font-bold leading-[1.35] tracking-[-0.03em] sm:text-4xl sm:leading-[46px]">봉사를 찾는 순간부터,<br /><span className="text-brand">함께하고 성장하는 순간까지</span></h2>
+              <span className="inline-flex items-center justify-center rounded-[20px] bg-brand-soft px-5 py-1.5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="feature-heading">주요 기능</span>
+              <h2 className="mt-4 text-[30px] font-bold leading-[1.35] tracking-[-0.03em] sm:text-4xl sm:leading-[46px]" data-motion="feature-heading">봉사를 찾는 순간부터,<br /><span className="text-brand">함께하고 성장하는 순간까지</span></h2>
             </div>
             <div className="mt-14 grid gap-5 md:grid-cols-2 xl:mt-[47px] xl:grid-cols-[575px_575px] xl:grid-rows-[283.44px_309.44px]">
               {features.map((feature) => (
-                <article key={feature.title} className="min-w-0 rounded-2xl border border-[#d9d9d9] bg-white p-[29px]">
+                <article key={feature.title} className="min-w-0 rounded-2xl border border-[#d9d9d9] bg-white p-[29px]" data-motion="feature-card">
                   {feature.title === "봉사 찾기" ? (
                     <Image src={feature.icon} alt="" width={40} height={40} className="h-10 w-10" />
                   ) : (
@@ -182,14 +204,14 @@ export default function Home() {
                   )}
                   <h3 className="mt-3 text-xl font-semibold leading-[25.5px] text-[#101110]">{feature.title}</h3>
                   <p className="mt-[5px] text-sm font-medium leading-[21.45px] text-[#70746f]">{feature.description}</p>
-                  <div className="mt-5 rounded-[14px] border border-[#edf0ec] bg-transparent p-[13px] text-[13px] leading-[18px] text-[#101110] shadow-[0_1px_3px_rgba(0,0,0,.1),0_1px_2px_rgba(0,0,0,.1)]">{feature.preview}</div>
+                  <div className="mt-5 rounded-[14px] border border-[#edf0ec] bg-transparent p-[13px] text-[13px] leading-[18px] text-[#101110] shadow-[0_1px_3px_rgba(0,0,0,.1),0_1px_2px_rgba(0,0,0,.1)]" data-motion="feature-preview">{feature.preview}</div>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="relative z-0 py-20 xl:h-[696px] xl:py-0">
+        <section className="relative z-0 py-20 xl:h-[696px] xl:py-0" data-motion-section="difference">
           <div className="relative mx-auto grid w-[calc(100%-40px)] max-w-[1232px] items-start gap-14 lg:grid-cols-[1.1fr_.9fr] xl:block xl:h-full">
             <Image src="/assets/illustrations/landing/service-difference-glow.svg" alt="" width={847} height={847} className="pointer-events-none absolute left-[-270px] top-[-170px] h-auto w-[720px] max-w-none -rotate-15 -scale-y-100 xl:hidden" aria-hidden="true" />
             <div className="pointer-events-none absolute left-[-330px] top-[-232.03px] hidden h-[927.897px] w-[927.893px] items-center justify-center xl:flex" aria-hidden="true">
@@ -203,12 +225,12 @@ export default function Home() {
             </div>
             <div className="xl:absolute xl:left-0 xl:top-[143px] xl:h-[370px] xl:w-[610px]">
               <div className="h-[226px]">
-                <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">서비스 차별점</span>
+                <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="difference-copy">서비스 차별점</span>
                 <div className="mt-2 h-[112px] pt-5">
-                  <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]">공고를 보여주는 데서<br />멈추지 않아요</h2>
+                  <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]" data-motion="difference-copy">공고를 보여주는 데서<br />멈추지 않아요</h2>
                 </div>
                 <div className="mt-2 h-[69px] py-2.5">
-                  <p className="text-xl leading-[30px] text-[#5e5e5d]">단순히 봉사 공고를 나열하는 포털이 아닙니다.<br />Gather는 발견부터 성장까지 이어지는 참여형 커뮤니티예요.</p>
+                  <p className="text-xl leading-[30px] text-[#5e5e5d]" data-motion="difference-copy">단순히 봉사 공고를 나열하는 포털이 아닙니다.<br />Gather는 발견부터 성장까지 이어지는 참여형 커뮤니티예요.</p>
                 </div>
               </div>
               <ul className="mt-8 text-sm leading-[21px] text-[#101110]">
@@ -217,10 +239,10 @@ export default function Home() {
                   "관심사가 비슷한 사람들과 봉사 팀 구성",
                   "참여 경험을 기록하고 지속적인 활동으로 연결",
                   "따뜻한 봉사 커뮤니티에서 경험과 정보 공유",
-                ].map((item, index) => <li key={item} className={`flex items-start gap-3 ${index === 0 ? "h-[22px]" : "h-[30px] pt-2"}`}><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e2f8ee] font-bold text-[11px] leading-[16.5px] text-brand">✓</span>{item}</li>)}
+                ].map((item, index) => <li key={item} className={`flex items-start gap-3 ${index === 0 ? "h-[22px]" : "h-[30px] pt-2"}`} data-motion="difference-item"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e2f8ee] font-bold text-[11px] leading-[16.5px] text-brand">✓</span>{item}</li>)}
               </ul>
             </div>
-            <div className="rounded-2xl border border-brand p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]">
+            <div className="rounded-2xl border border-brand p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]" data-motion="difference-journey">
               <h3 className="text-center text-lg font-semibold leading-6 text-[#101110]">봉사 경험의 전체 여정</h3>
               <div className="mt-6 grid grid-cols-4 text-center">
                 {[
@@ -229,7 +251,7 @@ export default function Home() {
                   ["참여", "/assets/icons/journey-participate.svg"],
                   ["성장", "/assets/icons/journey-grow.svg"],
                 ].map(([label, icon]) => (
-                  <div key={label} className="flex flex-col items-center gap-2">
+                  <div key={label} className="flex flex-col items-center gap-2" data-motion="difference-icon">
                     <Image src={icon} alt="" width={48} height={48} className="h-12 w-12" />
                     <p className="text-[13px] font-semibold leading-[16.5px] text-[#70746f]">{label}</p>
                   </div>
@@ -242,12 +264,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden py-20 xl:h-[1785px] xl:py-0">
+        <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden py-20 xl:h-[1785px] xl:py-0" data-motion-section="journey">
           <div className="pointer-events-none absolute left-[calc(50%-750px)] top-0 hidden h-[928px] w-[928px] rounded-full bg-[radial-gradient(circle,rgba(232,250,244,.55)_0%,rgba(232,250,244,.2)_48%,transparent_72%)] xl:block" aria-hidden="true" />
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1232px] xl:h-full">
             <div className="text-center xl:absolute xl:left-1/2 xl:top-[72px] xl:-translate-x-1/2">
-              <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">이용 방법</span>
-              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap">Gather에서 시작하는 방법</h2>
+              <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="journey-heading">이용 방법</span>
+              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap" data-motion="journey-heading">Gather에서 시작하는 방법</h2>
             </div>
 
             <div className="mt-14 flex flex-col items-center gap-8 xl:mt-0 xl:block">
@@ -259,7 +281,7 @@ export default function Home() {
               >
                 <div className="mt-[17px] flex flex-wrap gap-x-[6px] gap-y-[13px]">
                   {interestCategories.map((category) => (
-                    <span key={category.label} className={`flex h-[34px] items-center justify-center gap-[3px] rounded-[23px] border-[0.8px] ${category.width}`} style={{ backgroundColor: category.background, borderColor: category.border }}>
+                    <span key={category.label} className={`flex h-[34px] items-center justify-center gap-[3px] rounded-[23px] border-[0.8px] ${category.width}`} style={{ backgroundColor: category.background, borderColor: category.border }} data-motion="journey-chip">
                       <Image src={category.icon} alt="" width={14} height={14} className="h-[14px] w-[14px]" />
                       <span className="whitespace-nowrap text-[10.8px] font-semibold leading-3 text-[#5e5e5d]">{category.label}</span>
                     </span>
@@ -273,7 +295,7 @@ export default function Home() {
                 description="가능한 날짜와 지역, 관심 분야를 입력하면 맞춤 봉사를 보여드려요."
                 className="max-w-[310px] xl:absolute xl:left-[257px] xl:top-[580px] xl:h-[268px] xl:w-[310px]"
               >
-                <div className="relative mt-[15px] h-[100px] w-[260px] max-w-full rounded-[9px] border-[0.8px] border-brand bg-[rgba(240,246,240,.58)] p-[9px]">
+                <div className="relative mt-[15px] h-[100px] w-[260px] max-w-full rounded-[9px] border-[0.8px] border-brand bg-[rgba(240,246,240,.58)] p-[9px]" data-motion="journey-volunteer-card">
                   <div className="relative h-[77px] w-[66px] overflow-hidden rounded-[7px]">
                     <Image src="/assets/landing/step-volunteer-plogging.png" alt="한강공원 플로깅 활동" fill sizes="66px" className="object-cover" />
                   </div>
@@ -296,7 +318,7 @@ export default function Home() {
                   <p className="flex items-center gap-[3px] text-[13.6px] font-semibold leading-[21px] text-[#0a0a0a]">팀원 <span className="text-[10.6px] font-medium text-[#5b5b5b]">(12명)</span></p>
                   <div className="mt-[6px] flex gap-[9px]">
                     {[["김", "#78d997"], ["이", "#f76073"], ["박", "#7fc1fa"], ["최", "#f8d27d"], ["정", "#dc95d7"], ["+7", "#d9d9d9"]].map(([name, color]) => (
-                      <span key={name} className="flex h-[33px] w-[33px] shrink-0 items-center justify-center rounded-full text-[10.6px] font-semibold text-[#fafaf8]" style={{ backgroundColor: color }}>{name}</span>
+                      <span key={name} className="flex h-[33px] w-[33px] shrink-0 items-center justify-center rounded-full text-[10.6px] font-semibold text-[#fafaf8]" style={{ backgroundColor: color }} data-motion="journey-avatar">{name}</span>
                     ))}
                   </div>
                 </div>
@@ -308,8 +330,8 @@ export default function Home() {
                 description="활동 후 소감과 경험을 기록하고 다음 봉사로 이어가요."
                 className="max-w-[310px] xl:absolute xl:left-[257px] xl:top-[1237px] xl:h-[353px] xl:w-[310px]"
               >
-                <Image src="/assets/landing/journey-record-puzzle.png" alt="분야별 봉사 활동 기록" width={261} height={135} className="mt-3 h-auto w-[260px] max-w-full object-contain" />
-                <div className="mt-5 flex h-[53px] w-[260px] max-w-full items-start justify-between rounded-[9px] border-[0.8px] border-[#6270bc] px-[9px] py-[8px]">
+                <Image src="/assets/landing/journey-record-puzzle.png" alt="분야별 봉사 활동 기록" width={261} height={135} className="mt-3 h-auto w-[260px] max-w-full object-contain" data-motion="journey-record-puzzle" />
+                <div className="mt-5 flex h-[53px] w-[260px] max-w-full items-start justify-between rounded-[9px] border-[0.8px] border-[#6270bc] px-[9px] py-[8px]" data-motion="journey-record-card">
                   <div>
                     <p className="text-[10.9px] font-semibold leading-[14.5px] text-[#0a0a0a]">어린이 독서 지도</p>
                     <p className="mt-[6px] text-[10.1px] leading-[11.6px] text-[#a4a4a4]">2026.04.10 (토)&nbsp; 책읽는 친구들</p>
@@ -320,16 +342,16 @@ export default function Home() {
             </div>
 
             <div className="pointer-events-none hidden xl:block" aria-hidden="true">
-              <Image src="/assets/icons/timeline-line-step-2.svg" alt="" width={2} height={207} className="absolute left-[617px] top-[354px] h-[207px] w-0.5" />
-              <Image src="/assets/icons/timeline-line-step-3.svg" alt="" width={1} height={280} className="absolute left-[616px] top-[676px] h-[280px] w-px" />
-              <Image src="/assets/icons/timeline-line-step-4.svg" alt="" width={1} height={194} className="absolute left-[616px] top-[1034px] h-[194px] w-px" />
+              <Image src="/assets/icons/timeline-line-step-2.svg" alt="" width={2} height={207} className="absolute left-[617px] top-[354px] h-[207px] w-0.5" data-motion="journey-line" />
+              <Image src="/assets/icons/timeline-line-step-3.svg" alt="" width={1} height={280} className="absolute left-[616px] top-[676px] h-[280px] w-px" data-motion="journey-line" />
+              <Image src="/assets/icons/timeline-line-step-4.svg" alt="" width={1} height={194} className="absolute left-[616px] top-[1034px] h-[194px] w-px" data-motion="journey-line" />
               {[
                 ["/assets/icons/timeline-interest.svg", "left-[592px] top-[291px] bg-[#e2f8ee]", 26],
                 ["/assets/icons/timeline-search.svg", "left-[592px] top-[613px]", 48],
                 ["/assets/icons/timeline-team.svg", "left-[592px] top-[971px]", 48],
                 ["/assets/icons/timeline-participate.svg", "left-[592px] top-[1243px]", 48],
               ].map(([icon, position, size]) => (
-                <span key={String(icon)} className={`absolute z-10 flex h-12 w-12 items-center justify-center rounded-full ${position}`}>
+                <span key={String(icon)} className={`absolute z-10 flex h-12 w-12 items-center justify-center rounded-full ${position}`} data-motion="journey-icon">
                   <Image src={String(icon)} alt="" width={Number(size)} height={Number(size)} className="object-contain" style={{ width: Number(size), height: Number(size) }} />
                 </span>
               ))}
@@ -337,16 +359,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="volunteer-type" className="scroll-mt-24 bg-[linear-gradient(90deg,#e3f7eb_0%,#f5fbf7_68%,#fff_100%)] py-20 xl:h-[609px] xl:py-0">
+        <section id="volunteer-type" className="scroll-mt-24 bg-[linear-gradient(90deg,#e3f7eb_0%,#f5fbf7_68%,#fff_100%)] py-20 xl:h-[609px] xl:py-0" data-motion-section="volunteer-type">
           <div className="relative mx-auto flex w-[calc(100%-40px)] max-w-[1232px] flex-col gap-14 xl:h-full xl:block">
             <div className="xl:absolute xl:left-0 xl:top-[133px] xl:h-[347px] xl:w-[610px]">
               <div className="h-[226px]">
-                <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#f6fffc] px-5 text-sm font-semibold leading-[16.5px] text-brand">봉사 유형 테스트</span>
+                <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#f6fffc] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="type-copy">봉사 유형 테스트</span>
                 <div className="mt-2 h-[112px] pt-5">
-                  <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
+                  <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]" data-motion="type-copy">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
                 </div>
                 <div className="mt-2 h-[69px] py-2.5">
-                  <p className="text-xl leading-[30px] text-[#5e5e5d]">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<br />추천 활동을 확인해 보세요.</p>
+                  <p className="text-xl leading-[30px] text-[#5e5e5d]" data-motion="type-copy">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<br />추천 활동을 확인해 보세요.</p>
                 </div>
               </div>
               <div className="mt-0 flex min-h-[61px] flex-wrap items-center gap-x-4 gap-y-3 text-sm text-[#5e5e5d]">
@@ -354,9 +376,9 @@ export default function Home() {
                   ["/assets/icons/type-test-clock.svg", "약 60초 소요"],
                   ["/assets/icons/type-test-unlock.svg", "로그인 없이 시작"],
                   ["/assets/icons/type-test-save.svg", "결과 카드 저장 가능"],
-                ].map(([icon, label]) => <span key={label} className="flex items-center gap-3"><Image src={icon} alt="" width={24} height={24} className="h-6 w-6" />{label}</span>)}
+                ].map(([icon, label]) => <span key={label} className="flex items-center gap-3" data-motion="type-copy"><Image src={icon} alt="" width={24} height={24} className="h-6 w-6" />{label}</span>)}
               </div>
-              <Link href="/volunteer-type" className="inline-flex h-[56px] w-[220px] items-center justify-center rounded-[15px] bg-brand text-[15px] font-bold leading-[22px] text-white transition hover:bg-brand-strong">나의 봉사 유형 알아보기 →</Link>
+              <Link href="/volunteer-type" className="inline-flex h-[56px] w-[220px] items-center justify-center rounded-[15px] bg-brand text-[15px] font-bold leading-[22px] text-white transition hover:bg-brand-strong" data-motion="type-action">나의 봉사 유형 알아보기 →</Link>
             </div>
 
             <div className="relative mx-auto h-[367px] w-full max-w-[420px] xl:absolute xl:left-[856px] xl:top-[141px]" aria-hidden="true">
@@ -364,6 +386,9 @@ export default function Home() {
                 <div
                   className="absolute left-[68.81px] top-[25.28px] flex h-[331.05px] w-[331.06px] items-center justify-center"
                   style={{ filter: "drop-shadow(1px 4px 3px rgba(0, 0, 0, 0.12))" }}
+                  data-motion="type-puzzle-piece"
+                  data-motion-x="24"
+                  data-motion-y="10"
                 >
                   <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-x-100 rotate-[-171.38deg]">
                     <Image src="/assets/illustrations/landing/type-test-piece-right.svg" alt="" width={298} height={298} className="absolute left-[-3.46px] top-0 h-[297.68px] w-[297.68px] max-w-none" />
@@ -372,6 +397,9 @@ export default function Home() {
                 <div
                   className="absolute left-0 top-[16.18px] flex h-[339.8px] w-[339.8px] items-center justify-center"
                   style={{ filter: "drop-shadow(1px 4px 3px rgba(0, 0, 0, 0.12))" }}
+                  data-motion="type-puzzle-piece"
+                  data-motion-x="-24"
+                  data-motion-y="8"
                 >
                   <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-x-100 rotate-[169.27deg]">
                     <Image src="/assets/illustrations/landing/type-test-piece-back.svg" alt="" width={298} height={298} className="absolute left-[-3.46px] top-0 h-[297.67px] w-[297.68px] max-w-none" />
@@ -380,15 +408,18 @@ export default function Home() {
                 <div
                   className="absolute left-[50.91px] top-0 z-10 flex h-[331.06px] w-[331.14px] items-center justify-center"
                   style={{ filter: "drop-shadow(2px 6px 4px rgba(0, 0, 0, 0.14))" }}
+                  data-motion="type-puzzle-piece"
+                  data-motion-x="0"
+                  data-motion-y="21"
                 >
                   <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-y-100 rotate-[8.62deg]">
                     <Image src="/assets/illustrations/landing/type-test-piece-front.svg" alt="" width={305} height={307} className="absolute left-[-4.42px] top-0 h-[306.91px] w-[305.11px] max-w-none" />
                   </div>
                 </div>
-                <div className="absolute left-[147.95px] top-[108.85px] z-20 flex h-[40.73px] w-[93.26px] items-center justify-center">
+                <div className="absolute left-[147.95px] top-[108.85px] z-20 flex h-[40.73px] w-[93.26px] items-center justify-center" data-motion="type-puzzle-answer">
                   <span className="flex h-[35.97px] w-[90.19px] rotate-[7.77deg] items-start justify-center text-center text-[15.63px] font-medium leading-[23.45px] text-[#bbb]">든든한 지원가</span>
                 </div>
-                <div className="absolute left-[135px] top-[138px] z-20 flex h-[83.68px] w-[99.11px] items-center justify-center">
+                <div className="absolute left-[135px] top-[138px] z-20 flex h-[83.68px] w-[99.11px] items-center justify-center" data-motion="type-puzzle-answer">
                   <div className="relative h-[72.15px] w-[90.19px] rotate-[7.77deg]">
                     <span className="absolute left-1/2 top-[-4.41px] -translate-x-1/2 text-[60.99px] font-black leading-[91.49px] text-brand">?</span>
                   </div>
@@ -398,12 +429,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 xl:h-[1148px] xl:py-0">
+        <section className="py-20 xl:h-[1148px] xl:py-0" data-motion-section="explore">
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1170px] xl:h-full">
             <div className="text-center xl:absolute xl:left-1/2 xl:top-[160px] xl:-translate-x-1/2">
-              <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">이용 방법</span>
-              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap">Gather에서 시작하는 방법</h2>
-              <p className="mt-2 text-sm leading-5 text-[#5e5e5d]">아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.</p>
+              <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="explore-heading">이용 방법</span>
+              <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap" data-motion="explore-heading">Gather에서 시작하는 방법</h2>
+              <p className="mt-2 text-sm leading-5 text-[#5e5e5d]" data-motion="explore-heading">아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.</p>
             </div>
 
             <div className="mt-14 grid gap-5 md:grid-cols-3 xl:absolute xl:left-0 xl:top-[374px] xl:mt-0 xl:h-[178px] xl:w-full xl:grid-cols-[376.66px_376.67px_376.66px]">
@@ -412,7 +443,7 @@ export default function Home() {
                 ["interest", "관심 분야와 지역에 맞춰 탐색할 수 있어요", "내 일정과 위치에 맞는 봉사를 손쉽게 필터링해 찾아보세요."],
                 ["external", "외부 공고는 원문을 확인해 주세요", "외부 공고는 신청 전에 원문과 모집 조건을 꼭 확인해 주세요."],
               ].map(([kind, title, description]) => (
-                <article key={kind} className="h-[178px] rounded-2xl border border-[#e8ebe7] bg-white p-[25px]">
+                <article key={kind} className="h-[178px] rounded-2xl border border-[#e8ebe7] bg-white p-[25px]" data-motion="explore-card">
                   {kind === "browse" ? <Image src="/assets/icons/explore-browse.svg" alt="" width={48} height={48} /> : (
                     <span className={`flex h-12 w-12 items-center justify-center rounded-full ${kind === "interest" ? "bg-[#e2f8ee]" : "bg-[#eef1ff]"}`}>
                       <Image src={kind === "interest" ? "/assets/icons/timeline-interest.svg" : "/assets/icons/explore-external.svg"} alt="" width={kind === "interest" ? 26 : 25} height={kind === "interest" ? 26 : 25} />
@@ -424,14 +455,14 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-8 rounded-2xl border border-[#e8ebe7] bg-white p-[25px] shadow-[0_1px_1.5px_rgba(0,0,0,.1),0_1px_1px_rgba(0,0,0,.1)] xl:absolute xl:left-1/2 xl:top-[600px] xl:mt-0 xl:h-[270px] xl:w-[790px] xl:-translate-x-1/2">
+            <div className="mt-8 rounded-2xl border border-[#e8ebe7] bg-white p-[25px] shadow-[0_1px_1.5px_rgba(0,0,0,.1),0_1px_1px_rgba(0,0,0,.1)] xl:absolute xl:left-1/2 xl:top-[600px] xl:mt-0 xl:h-[270px] xl:w-[790px] xl:-translate-x-1/2" data-motion="explore-panel">
               <div className="flex h-[18px] items-center justify-between">
                 <strong className="text-base leading-6 text-[#101110]">Gather</strong>
                 <span className="text-xs leading-[18px] text-[#70746f]">봉사 탐색</span>
               </div>
               <div className="mt-4 flex flex-wrap gap-[5px]">
                 {interestCategories.map((category) => (
-                  <span key={category.label} className="flex h-[31px] items-center justify-center gap-[3px] rounded-[21px] border-[0.7px] px-[11px]" style={{ backgroundColor: category.background, borderColor: category.border }}>
+                  <span key={category.label} className="flex h-[31px] items-center justify-center gap-[3px] rounded-[21px] border-[0.7px] px-[11px]" style={{ backgroundColor: category.background, borderColor: category.border }} data-motion="explore-chip">
                     <Image src={category.icon} alt="" width={13} height={13} />
                     <span className="whitespace-nowrap text-[9.75px] font-semibold leading-[11px] text-[#5e5e5d]">{category.label}</span>
                   </span>
@@ -442,7 +473,7 @@ export default function Home() {
                   { title: "한강공원 플로깅 🌿", description: "같이 한강 걸으면서 줍깅해요", meta: <>여의도 · 26.00.00 · <strong className="font-semibold text-[#f76073]">D-4</strong></>, tag: "환경", icon: "/assets/icons/category-environment.svg", image: "/assets/landing/step-volunteer-plogging.png", border: "#82d3ca", background: "#f1fffd" },
                   { title: "동화책 같이 읽어요 📖", description: "함께 책을 읽으며 따뜻한 시간 나눠요", meta: <>강남구 · 26.00.00</>, tag: "문화", icon: "/assets/icons/category-culture.svg", image: "/assets/landing/step-volunteer-reading.png", border: "#fade9e", background: "#fffbf1" },
                 ].map((item) => (
-                  <div key={item.title} className="relative min-h-[138px] rounded-xl border border-[#d9d9d9] bg-white p-3 pl-[90px] md:h-[138px] md:p-[15px] md:pl-[118px]">
+                  <div key={item.title} className="relative min-h-[138px] rounded-xl border border-[#d9d9d9] bg-white p-3 pl-[90px] md:h-[138px] md:p-[15px] md:pl-[118px]" data-motion="explore-listing">
                     <div className="absolute left-[9px] top-3 h-[90px] w-[68px] overflow-hidden rounded-[10px] md:left-[11px] md:top-[15px] md:h-[106px] md:w-[91px]">
                       <Image src={item.image} alt="" fill sizes="91px" className="object-cover" />
                     </div>
@@ -457,18 +488,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white py-20 text-center xl:h-[724px] xl:py-0">
+        <section className="bg-white py-20 text-center xl:h-[724px] xl:py-0" data-motion-section="brand">
           <div className="mx-auto flex w-[calc(100%-40px)] max-w-[473px] flex-col items-center xl:h-full xl:justify-center">
             <div className="flex flex-col items-center gap-10">
               <div className="flex flex-col items-center gap-7">
                 <h2 className="text-[clamp(44px,5vw,72px)] font-bold leading-[1.2] tracking-[-0.04em] text-[#101110] xl:leading-[normal] xl:tracking-normal">
-                  발견은 더 쉽게.<br />
-                  참여는 <span className="text-brand">함께.</span><br />
-                  경험은 <span className="text-brand">성장</span>으로.
+                  <span className="block" data-motion="brand-line">발견은 더 쉽게.</span>
+                  <span className="block" data-motion="brand-line">참여는 <span className="text-brand">함께.</span></span>
+                  <span className="block" data-motion="brand-line">경험은 <span className="text-brand">성장</span>으로.</span>
                 </h2>
-                <span className="h-[5px] w-14 rounded-full bg-brand" aria-hidden="true" />
+                <span className="h-[5px] w-14 rounded-full bg-brand" aria-hidden="true" data-motion="brand-bar" />
               </div>
-              <p className="text-lg leading-8 text-[#5e5e5d] sm:text-2xl sm:leading-normal">
+              <p className="text-lg leading-8 text-[#5e5e5d] sm:text-2xl sm:leading-normal" data-motion="brand-description">
                 Gather는 공고를 보여주는 데서 멈추지 않습니다.<br />
                 관심 있는 봉사를 발견하고, 함께할 사람을 만나고,<br />
                 나만의 참여 경험을 쌓아갈 수 있도록 돕습니다.
@@ -481,7 +512,7 @@ export default function Home() {
                 ["참여", "border-[#d197d1] bg-[#fff3ff] text-[#bf62bb]"],
                 ["성장", "border-[#fade9e] bg-[#fffbf1] text-[#db9c16]"],
               ].map(([item, style]) => (
-                <span key={item} className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`}>
+                <span key={item} className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`} data-motion="brand-chip">
                   {item}
                 </span>
               ))}
@@ -489,29 +520,29 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#fafaf8] py-16 xl:h-[579px] xl:py-[90px]">
-          <div className="mx-auto flex min-h-[399px] w-[calc(100%-40px)] max-w-[949px] flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(114.284deg,#fafafa_32.074%,#d4fddc_102.25%)] px-5 py-12 text-center sm:px-10 xl:py-0">
+        <section className="bg-[#fafaf8] py-16 xl:h-[579px] xl:py-[90px]" data-motion-section="bottom-cta">
+          <div className="mx-auto flex min-h-[399px] w-[calc(100%-40px)] max-w-[949px] flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(114.284deg,#fafafa_32.074%,#d4fddc_102.25%)] px-5 py-12 text-center sm:px-10 xl:py-0" data-motion="bottom-cta-panel">
             <div className="flex flex-col items-center gap-9">
               <div className="flex h-[46px] items-center gap-2" aria-hidden="true">
-                <Image src="/assets/icons/cta-discover.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" />
-                <Image src="/assets/icons/cta-connect.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" />
-                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#fff3ff]">
+                <Image src="/assets/icons/cta-discover.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" data-motion="bottom-cta-icon" />
+                <Image src="/assets/icons/cta-connect.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" data-motion="bottom-cta-icon" />
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#fff3ff]" data-motion="bottom-cta-icon">
                   <Image src="/assets/icons/cta-participate.svg" alt="" width={26} height={26} className="h-[26px] w-[26px]" />
                 </span>
-                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#f1f8ff]">
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[10px] bg-[#f1f8ff]" data-motion="bottom-cta-icon">
                   <Image src="/assets/icons/cta-grow.svg" alt="" width={21} height={26} className="h-[26px] w-[21px]" />
                 </span>
               </div>
               <div>
-                <h2 className="text-[30px] font-bold leading-[1.3] text-[#101110] sm:text-4xl sm:leading-[normal]">
+                <h2 className="text-[30px] font-bold leading-[1.3] text-[#101110] sm:text-4xl sm:leading-[normal]" data-motion="bottom-cta-copy">
                   나와 맞는 첫 봉사를<br />
                   <span className="text-brand">시작해볼까요?</span>
                 </h2>
-                <p className="mt-3 text-base font-medium leading-normal text-[#18bd77] sm:text-lg">작은 관심이 새로운 만남과 변화의 시작이 될 수 있어요.</p>
+                <p className="mt-3 text-base font-medium leading-normal text-[#18bd77] sm:text-lg" data-motion="bottom-cta-copy">작은 관심이 새로운 만남과 변화의 시작이 될 수 있어요.</p>
               </div>
               <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
-                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] bg-brand text-lg font-semibold leading-[22px] text-white transition hover:bg-brand-strong sm:w-[174px]">봉사 찾아보기</a>
-                <a href="#volunteer-type" className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] border-2 border-brand bg-white/40 text-lg font-semibold leading-[22px] text-brand sm:w-[216px]">봉사 유형 알아보기</a>
+                <a href={siteConfig.volunteerListUrl} className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] bg-brand text-lg font-semibold leading-[22px] text-white transition hover:bg-brand-strong sm:w-[174px]" data-motion="bottom-cta-action">봉사 찾아보기</a>
+                <a href="#volunteer-type" className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] border-2 border-brand bg-white/40 text-lg font-semibold leading-[22px] text-brand sm:w-[216px]" data-motion="bottom-cta-action">봉사 유형 알아보기</a>
               </div>
             </div>
           </div>
