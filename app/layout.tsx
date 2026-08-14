@@ -32,12 +32,21 @@ export const metadata: Metadata = {
     description:
       "하고 싶은 봉사부터 함께할 사람까지, Gather에서 봉사의 모든 순간을 시작하세요.",
     url: "/",
+    images: [
+      {
+        url: "/og.png",
+        width: 720,
+        height: 380,
+        alt: "Gather - 함께하는 봉사의 시작",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gather | 함께하는 봉사의 시작",
     description:
       "하고 싶은 봉사부터 함께할 사람까지, Gather에서 봉사의 모든 순간을 시작하세요.",
+    images: ["/og.png"],
   },
 };
 
