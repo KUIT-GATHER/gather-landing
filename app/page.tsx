@@ -134,11 +134,28 @@ export default function Home() {
             </div>
 
             <div className="pointer-events-none relative mx-auto mt-5 h-[380px] w-full max-w-[520px] md:h-[460px] xl:absolute xl:inset-0 xl:m-0 xl:h-auto xl:max-w-none" aria-hidden="true">
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(225,248,235,.9)_0%,rgba(225,248,235,.3)_50%,transparent_72%)] blur-[18px] xl:left-[760px] xl:top-[85px] xl:h-[590px] xl:w-[590px]" />
-              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={113} height={113} className="absolute left-[10%] top-[90px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[856px] xl:top-[238px] xl:w-[113px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={96} height={112} className="absolute right-[8%] top-[55px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[1059px] xl:right-auto xl:top-[207px] xl:w-[96px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={107} height={107} className="absolute left-[20%] top-[265px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[854px] xl:top-[478px] xl:w-[107px]" loading="eager" />
-              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={105} height={105} className="absolute right-[15%] top-[215px] w-[84px] drop-shadow-[0_20px_24px_rgba(41,147,105,.12)] xl:left-[1046px] xl:right-auto xl:top-[421px] xl:w-[105px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/hero-glow-large.svg" alt="" width={841} height={841} className="absolute left-1/2 top-1/2 h-auto w-[430px] max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-[173.68deg] xl:hidden" loading="eager" />
+              <Image src="/assets/illustrations/landing/hero-glow-small.svg" alt="" width={470} height={470} className="absolute left-[9%] top-[3%] h-auto w-[300px] max-w-none -rotate-[168.88deg] xl:hidden" loading="eager" />
+
+              <div className="absolute left-[563px] top-[-22px] hidden size-[764.177px] items-center justify-center xl:flex">
+                <div className="relative size-[692.163px] -rotate-[173.68deg]">
+                  <div className="absolute inset-[-10.72%]">
+                    <Image src="/assets/illustrations/landing/hero-glow-large.svg" alt="" fill sizes="841px" className="max-w-none" loading="eager" />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute left-[721.48px] top-[142.54px] hidden size-[497.159px] items-center justify-center xl:flex">
+                <div className="relative size-[423.46px] -rotate-[168.88deg]">
+                  <div className="absolute inset-[-5.53%]">
+                    <Image src="/assets/illustrations/landing/hero-glow-small.svg" alt="" fill sizes="470px" className="max-w-none" loading="eager" />
+                  </div>
+                </div>
+              </div>
+
+              <Image src="/assets/illustrations/landing/puzzle-companion.svg" alt="" width={100} height={100} className="absolute left-[18%] top-[55px] h-auto w-[76px] -rotate-[8deg] xl:left-[862.48px] xl:top-[230.48px] xl:w-[100.119px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-support.svg" alt="" width={81} height={100} className="absolute right-[14%] top-[40px] h-auto w-[62px] rotate-[9.25deg] xl:left-[1050.53px] xl:right-auto xl:top-[212.75px] xl:w-[81.128px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-knowledge.svg" alt="" width={100} height={100} className="absolute left-[22%] top-[230px] h-auto w-[78px] -rotate-[86.08deg] xl:left-[857.38px] xl:top-[381.3px] xl:w-[100.212px]" loading="eager" />
+              <Image src="/assets/illustrations/landing/puzzle-action.svg" alt="" width={101} height={100} className="absolute right-[16%] top-[210px] h-auto w-[78px] rotate-[2.77deg] xl:left-[1043.87px] xl:right-auto xl:top-[423.35px] xl:w-[100.716px]" loading="eager" />
             </div>
             <a href="#features" className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 text-xs text-muted xl:flex">
               스크롤해서 더 알아보기
