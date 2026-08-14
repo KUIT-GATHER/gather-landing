@@ -320,9 +320,9 @@ export default function Home() {
             </div>
 
             <div className="pointer-events-none hidden xl:block" aria-hidden="true">
-              <Image src="/assets/icons/timeline-line-step-2.svg" alt="" width={2} height={207} className="absolute left-[617px] top-[561px] h-[207px] w-0.5" />
-              <Image src="/assets/icons/timeline-line-step-3.svg" alt="" width={1} height={280} className="absolute left-[616px] top-[956px] h-[280px] w-px" />
-              <Image src="/assets/icons/timeline-line-step-4.svg" alt="" width={1} height={194} className="absolute left-[616px] top-[1228px] h-[194px] w-px" />
+              <Image src="/assets/icons/timeline-line-step-2.svg" alt="" width={2} height={207} className="absolute left-[617px] top-[354px] h-[207px] w-0.5" />
+              <Image src="/assets/icons/timeline-line-step-3.svg" alt="" width={1} height={280} className="absolute left-[616px] top-[676px] h-[280px] w-px" />
+              <Image src="/assets/icons/timeline-line-step-4.svg" alt="" width={1} height={194} className="absolute left-[616px] top-[1034px] h-[194px] w-px" />
               {[
                 ["/assets/icons/timeline-interest.svg", "left-[592px] top-[291px] bg-[#e2f8ee]", 26],
                 ["/assets/icons/timeline-search.svg", "left-[592px] top-[613px]", 48],
