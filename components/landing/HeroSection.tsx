@@ -16,7 +16,7 @@ export function HeroSection() {
             흩어진 봉사 공고를 내 일정과 관심사에 맞게 찾고,<br className="hidden sm:block" /> 혼자가 망설여질 때는 함께할 팀을 만나보세요.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href={siteConfig.volunteerListUrl} className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] bg-brand px-10 text-xl font-bold text-white sm:h-[72px] sm:w-auto sm:min-w-[189px]" data-motion="hero-cta">봉사 찾아보기</a>
+            <a href={siteConfig.gatherWebUrl} className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] bg-brand px-10 text-xl font-bold text-white sm:h-[72px] sm:w-auto sm:min-w-[189px]" data-motion="hero-cta">봉사 찾아보기</a>
             <a href="#volunteer-type" className="inline-flex h-[60px] w-full items-center justify-center rounded-[20px] border-2 border-brand bg-white/40 text-lg font-semibold text-brand sm:h-[72px] sm:w-[189px]" data-motion="hero-cta">봉사 유형 알아보기</a>
           </div>
           <p className="mt-6 text-sm leading-[16.5px] text-subtle" data-motion="hero-footer-copy">무료로 이용할 수 있어요</p>

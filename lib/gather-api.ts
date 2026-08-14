@@ -119,6 +119,7 @@ export function getPostingDetailUrl(posting: PostingListItem) {
 
 export function getCategoryExploreUrl(category: PostingCategory) {
   const url = new URL(siteConfig.volunteerListUrl);
+  url.searchParams.set("sort", "latest");
   url.searchParams.set("category", category);
   return url.toString();
 }

@@ -25,7 +25,7 @@ export function BottomCtaSection() {
             <p className="mt-3 text-base font-medium leading-normal text-[#18bd77] sm:text-lg" data-motion="bottom-cta-copy">작은 관심이 새로운 만남과 변화의 시작이 될 수 있어요.</p>
           </div>
           <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
-            <a href={siteConfig.volunteerListUrl} className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] bg-brand text-lg font-semibold leading-[22px] text-white transition hover:bg-brand-strong sm:w-[174px]" data-motion="bottom-cta-action">봉사 찾아보기</a>
+            <a href={siteConfig.gatherWebUrl} className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] bg-brand text-lg font-semibold leading-[22px] text-white transition hover:bg-brand-strong sm:w-[174px]" data-motion="bottom-cta-action">봉사 찾아보기</a>
             <a href="#volunteer-type" className="inline-flex h-[62px] w-full items-center justify-center rounded-[10px] border-2 border-brand bg-white/40 text-lg font-semibold leading-[22px] text-brand sm:w-[216px]" data-motion="bottom-cta-action">봉사 유형 알아보기</a>
           </div>
         </div>
