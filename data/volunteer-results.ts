@@ -22,7 +22,6 @@ export interface VolunteerResultData {
   examples: readonly ResultActivity[];
   campaigns: readonly ResultActivity[];
   tags: readonly string[];
-  apiCategory: "WELFARE" | "EDUCATION" | "ENVIRONMENT" | "COMMUNITY";
 }
 
 export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
@@ -50,7 +49,6 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
       { title: "취약계층 물품 나눔", description: "생필품 · 식품 등을 직접 전달하며 소외된 이웃과 연결되는 활동", fit: "직접 만남을 통해 진심을 전할 수 있어요" },
     ],
     tags: ["복지 · 돌봄", "아동 · 청소년"],
-    apiCategory: "WELFARE",
   },
   knowledge: {
     name: "지식 나눔가",
@@ -76,7 +74,6 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
       { title: "정보 접근성 개선 활동", description: "저소득층 · 장애인 등을 위한 정보 격차 해소 및 정책 지지 서명", fit: "공정한 배움의 기회를 중시하는 가치관과 연결돼요" },
     ],
     tags: ["멘토링", "디지털 · IT", "청소년 교육"],
-    apiCategory: "EDUCATION",
   },
   action: {
     name: "변화를 만드는 행동가",
@@ -102,7 +99,6 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
       { title: "동물보호·입양 인식 개선", description: "유기동물 보호와 입양 문화를 확산시키는 캠페인 및 현장 활동", fit: "현장에서 직접 행동하며 변화를 만드는 스타일과 잘 어울려요" },
     ],
     tags: ["환경 · 생태", "플로깅", "캠페인"],
-    apiCategory: "ENVIRONMENT",
   },
   support: {
     name: "든든한 지원가",
@@ -128,7 +124,6 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
       { title: "온라인 서명·인식 개선", description: "사회적 의제에 대한 온라인 서명 참여 및 공유 · 확산 활동", fit: "비대면으로 의미 있는 기여를 할 수 있어요" },
     ],
     tags: ["온라인", "운영 지원", "콘텐츠 · 문화"],
-    apiCategory: "COMMUNITY",
   },
 };
 

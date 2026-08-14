@@ -4,17 +4,20 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import type { VolunteerResultData } from "@/data/volunteer-results";
+import type { VolunteerType } from "@/data/volunteer-test";
 import {
   createRecommendationUrl,
   getCategoryExploreUrl,
   getPostingDetailUrl,
   isPostingListResponse,
+  recommendationCategoryByType,
   type PostingCategory,
   type PostingListItem,
 } from "@/lib/gather-api";
 
 type RecommendationsProps = {
   result: VolunteerResultData;
+  type: VolunteerType;
 };
 
 const categoryLabels: Record<PostingCategory, string> = {
@@ -32,7 +35,8 @@ function formatDate(value: string | null) {
   return date.length === 3 ? `${date[0].slice(2)}.${date[1]}.${date[2]}` : null;
 }
 
-export function Recommendations({ result }: RecommendationsProps) {
+export function Recommendations({ result, type }: RecommendationsProps) {
+  const recommendationCategory = recommendationCategoryByType[type];
   const [state, setState] = useState<
     | { status: "loading"; postings: [] }
     | { status: "success"; postings: PostingListItem[] }
@@ -42,7 +46,7 @@ export function Recommendations({ result }: RecommendationsProps) {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(createRecommendationUrl(result.apiCategory), {
+    fetch(createRecommendationUrl(recommendationCategory), {
       method: "GET",
       headers: { Accept: "application/json" },
       signal: controller.signal,
@@ -60,7 +64,7 @@ export function Recommendations({ result }: RecommendationsProps) {
       });
 
     return () => controller.abort();
-  }, [result.apiCategory]);
+  }, [recommendationCategory]);
 
   return (
     <section className="mt-10 flex flex-col gap-10 rounded-[20px] bg-white px-5 py-7 sm:px-8 xl:px-10 xl:py-8">
@@ -115,7 +119,7 @@ export function Recommendations({ result }: RecommendationsProps) {
               );
             })}
           </div>
-          <a href={getCategoryExploreUrl(result.apiCategory)} aria-label="추천 카테고리 둘러보기" className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full xl:h-[81px] xl:w-[81px]" style={{ backgroundColor: result.accent }}>
+          <a href={getCategoryExploreUrl(recommendationCategory)} aria-label="추천 카테고리 둘러보기" className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full xl:h-[81px] xl:w-[81px]" style={{ backgroundColor: result.accent }}>
             <Image src="/assets/icons/result-next.svg" alt="" width={82} height={82} className="h-[64px] w-[64px] max-w-none xl:h-[82px] xl:w-[82px]" />
           </a>
         </div>
@@ -129,7 +133,7 @@ export function Recommendations({ result }: RecommendationsProps) {
               <p className="text-xl font-medium leading-normal tracking-[-0.03em] text-[#0a0a0a] sm:text-2xl xl:text-[26px]">지금은 이 유형과 정확히 맞는 모집 공고가 없어요.</p>
               <p className="text-base leading-normal text-[#5e5e5d] sm:text-xl xl:text-2xl">다른 추천 카테고리도 둘러보세요.</p>
             </div>
-            <a href={getCategoryExploreUrl(result.apiCategory)} className="inline-flex min-h-[56px] items-center gap-3 rounded-[10px] px-6 py-4 text-base font-semibold leading-normal text-[#fafaf8] sm:text-lg xl:text-xl" style={{ backgroundColor: result.accent }}>
+            <a href={getCategoryExploreUrl(recommendationCategory)} className="inline-flex min-h-[56px] items-center gap-3 rounded-[10px] px-6 py-4 text-base font-semibold leading-normal text-[#fafaf8] sm:text-lg xl:text-xl" style={{ backgroundColor: result.accent }}>
               추천 카테고리 둘러보기
               <span aria-hidden="true">→</span>
             </a>

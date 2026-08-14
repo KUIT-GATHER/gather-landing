@@ -27,7 +27,7 @@ export function ResultPage({ type, matchCount }: ResultPageProps) {
       <div className="mx-auto w-[calc(100%-40px)] max-w-[1233px] pb-20 pt-10 xl:pb-[500px] xl:pt-[60px]">
         <ResultSummary result={result} />
         <ResultContent result={result} matchCount={matchCount} />
-        <Recommendations result={result} />
+        <Recommendations result={result} type={type} />
         <ResultActions type={type} />
       </div>
 
