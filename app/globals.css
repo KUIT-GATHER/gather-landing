@@ -1,89 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #fafaf8;
-  --surface: #ffffff;
-  --foreground: #0a0a0a;
-  --text-muted: #5e5e5d;
-  --text-subtle: #a4a4a4;
-  --stroke: #d9d9d9;
-  --brand: #00c77b;
-  --brand-strong: #18bd77;
-  --brand-soft: #e8faf4;
-  --header-height: 72px;
-  --content-width: 1232px;
+@theme {
+  --color-background: #fafaf8;
+  --color-foreground: #0a0a0a;
+  --color-muted: #5e5e5d;
+  --color-subtle: #a4a4a4;
+  --color-stroke: #d9d9d9;
+  --color-brand: #00c77b;
+  --color-brand-strong: #18bd77;
+  --color-brand-soft: #e8faf4;
+  --spacing-header: 72px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--text-muted);
-  --color-subtle: var(--text-subtle);
-  --color-stroke: var(--stroke);
-  --color-brand: var(--brand);
-  --color-brand-strong: var(--brand-strong);
-  --color-brand-soft: var(--brand-soft);
-  --font-sans: var(--font-pretendard);
+  --font-sans: var(--font-pretendard), "Apple SD Gothic Neo", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  background: var(--background);
-}
-
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-pretendard), "Apple SD Gothic Neo", sans-serif;
-  overflow-x: clip;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  font: inherit;
-}
-
-a {
-  text-decoration: none;
-}
-
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-::selection {
-  background: #baf2da;
-  color: var(--foreground);
-}
-
-:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent);
-  outline-offset: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@layer base {
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-brand) 45%, transparent);
+    outline-offset: 3px;
   }
 
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
 }

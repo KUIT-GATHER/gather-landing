@@ -115,7 +115,7 @@ export default function Home() {
     <>
       <LandingHeader />
       <main className="overflow-hidden">
-        <section id="top" className="scroll-mt-24 pt-[var(--header-height)] xl:h-[810px]">
+        <section id="top" className="scroll-mt-24 pt-header xl:h-[810px]">
           <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1232px] pb-[60px] pt-[72px] xl:h-[738px] xl:py-0 xl:pt-[132px]">
             <div className="relative z-10 w-full max-w-[545px]">
               <span className="inline-flex items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 py-1.5 text-xs font-semibold leading-[16.5px] text-brand">봉사 커뮤니티 플랫폼</span>

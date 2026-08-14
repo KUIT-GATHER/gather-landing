@@ -16,7 +16,7 @@ export function LandingHeader() {
   const closeMobileMenu = () => mobileMenuRef.current?.removeAttribute("open");
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-[#e8ebe7] bg-[rgba(250,251,249,.9)] backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 h-header border-b border-[#e8ebe7] bg-[rgba(250,251,249,.9)] backdrop-blur-xl">
       <div className="mx-auto flex h-full w-[calc(100%-40px)] max-w-[1236px] items-center justify-between">
         <BrandLogo eager />
         <nav aria-label="주요 메뉴" className="hidden items-center gap-9 md:flex">

@@ -41,10 +41,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={pretendard.variable}
+      className={`${pretendard.variable} scroll-smooth bg-background`}
       data-scroll-behavior="smooth"
     >
-      <body>{children}</body>
+      <body className="min-h-screen overflow-x-clip bg-background font-sans text-foreground">
+        {children}
+      </body>
     </html>
   );
 }
