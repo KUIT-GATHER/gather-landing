@@ -164,13 +164,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="features" className="scroll-mt-24 py-20 xl:h-[828px] xl:py-0 xl:pt-[31px]">
+        <section id="features" className="relative z-10 scroll-mt-24 py-20 xl:h-[828px] xl:py-0 xl:pt-[31px]">
           <div className="mx-auto w-[calc(100%-40px)] max-w-[1170px]">
             <div className="text-center">
               <span className="inline-flex items-center justify-center rounded-[20px] bg-brand-soft px-5 py-1.5 text-sm font-semibold leading-[16.5px] text-brand">주요 기능</span>
               <h2 className="mt-4 text-[30px] font-bold leading-[1.35] tracking-[-0.03em] sm:text-4xl sm:leading-[46px]">봉사를 찾는 순간부터,<br /><span className="text-brand">함께하고 성장하는 순간까지</span></h2>
             </div>
-            <div className="mt-14 grid gap-5 md:grid-cols-2 xl:mt-[121px] xl:grid-cols-[575px_575px] xl:grid-rows-[283.44px_309.44px]">
+            <div className="mt-14 grid gap-5 md:grid-cols-2 xl:mt-[47px] xl:grid-cols-[575px_575px] xl:grid-rows-[283.44px_309.44px]">
               {features.map((feature) => (
                 <article key={feature.title} className="min-w-0 rounded-2xl border border-[#d9d9d9] bg-white p-[29px]">
                   {feature.title === "봉사 찾기" ? (
@@ -189,8 +189,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 xl:h-[696px] xl:py-0">
+        <section className="relative z-0 py-20 xl:h-[696px] xl:py-0">
           <div className="relative mx-auto grid w-[calc(100%-40px)] max-w-[1232px] items-start gap-14 lg:grid-cols-[1.1fr_.9fr] xl:block xl:h-full">
+            <Image src="/assets/illustrations/landing/service-difference-glow.svg" alt="" width={847} height={847} className="pointer-events-none absolute left-[-270px] top-[-170px] h-auto w-[720px] max-w-none -rotate-15 -scale-y-100 xl:hidden" aria-hidden="true" />
+            <div className="pointer-events-none absolute left-[-330px] top-[-232.03px] hidden h-[927.897px] w-[927.893px] items-center justify-center xl:flex" aria-hidden="true">
+              <div className="flex-none -rotate-15 -scale-y-100">
+                <div className="relative h-[757.626px] w-[757.62px]">
+                  <div className="absolute inset-[-5.87%]">
+                    <Image src="/assets/illustrations/landing/service-difference-glow.svg" alt="" fill sizes="847px" className="max-w-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="xl:absolute xl:left-0 xl:top-[143px] xl:h-[370px] xl:w-[610px]">
               <div className="h-[226px]">
                 <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand">서비스 차별점</span>
@@ -210,7 +220,7 @@ export default function Home() {
                 ].map((item, index) => <li key={item} className={`flex items-start gap-3 ${index === 0 ? "h-[22px]" : "h-[30px] pt-2"}`}><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e2f8ee] font-bold text-[11px] leading-[16.5px] text-brand">✓</span>{item}</li>)}
               </ul>
             </div>
-            <div className="rounded-2xl border border-brand bg-white p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]">
+            <div className="rounded-2xl border border-brand p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]">
               <h3 className="text-center text-lg font-semibold leading-6 text-[#101110]">봉사 경험의 전체 여정</h3>
               <div className="mt-6 grid grid-cols-4 text-center">
                 {[
