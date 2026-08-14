@@ -360,11 +360,40 @@ export default function Home() {
             </div>
 
             <div className="relative mx-auto h-[367px] w-full max-w-[420px] xl:absolute xl:left-[856px] xl:top-[141px]" aria-hidden="true">
-              <Image src="/assets/illustrations/landing/type-test-piece-left.svg" alt="" width={298} height={298} className="absolute left-0 top-[70px] h-auto w-[71%]" />
-              <Image src="/assets/illustrations/landing/type-test-piece-right.svg" alt="" width={298} height={298} className="absolute left-[27%] top-[25px] h-auto w-[71%]" />
-              <Image src="/assets/illustrations/landing/type-test-piece-front.svg" alt="" width={305} height={307} className="absolute left-[22.4%] top-0 z-10 h-auto w-[72.6%]" />
-              <span className="absolute left-[36%] top-[108px] z-20 w-[120px] text-center text-[17px] font-medium leading-9 text-[#b5b5b5]">든든한 지원가</span>
-              <span className="absolute left-[42%] top-[145px] z-20 text-[64px] font-bold leading-none text-brand">?</span>
+              <div className="absolute left-1/2 top-0 h-[367px] w-[420px] origin-top -translate-x-1/2 scale-[.66] min-[375px]:scale-[.78] sm:scale-100">
+                <div
+                  className="absolute left-[68.81px] top-[25.28px] flex h-[331.05px] w-[331.06px] items-center justify-center"
+                  style={{ filter: "drop-shadow(1px 4px 3px rgba(0, 0, 0, 0.12))" }}
+                >
+                  <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-x-100 rotate-[-171.38deg]">
+                    <Image src="/assets/illustrations/landing/type-test-piece-right.svg" alt="" width={298} height={298} className="absolute left-[-3.46px] top-0 h-[297.68px] w-[297.68px] max-w-none" />
+                  </div>
+                </div>
+                <div
+                  className="absolute left-0 top-[16.18px] flex h-[339.8px] w-[339.8px] items-center justify-center"
+                  style={{ filter: "drop-shadow(1px 4px 3px rgba(0, 0, 0, 0.12))" }}
+                >
+                  <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-x-100 rotate-[169.27deg]">
+                    <Image src="/assets/illustrations/landing/type-test-piece-back.svg" alt="" width={298} height={298} className="absolute left-[-3.46px] top-0 h-[297.67px] w-[297.68px] max-w-none" />
+                  </div>
+                </div>
+                <div
+                  className="absolute left-[50.91px] top-0 z-10 flex h-[331.06px] w-[331.14px] items-center justify-center"
+                  style={{ filter: "drop-shadow(2px 6px 4px rgba(0, 0, 0, 0.14))" }}
+                >
+                  <div className="relative h-[290.75px] w-[290.84px] flex-none -scale-y-100 rotate-[8.62deg]">
+                    <Image src="/assets/illustrations/landing/type-test-piece-front.svg" alt="" width={305} height={307} className="absolute left-[-4.42px] top-0 h-[306.91px] w-[305.11px] max-w-none" />
+                  </div>
+                </div>
+                <div className="absolute left-[147.95px] top-[108.85px] z-20 flex h-[40.73px] w-[93.26px] items-center justify-center">
+                  <span className="flex h-[35.97px] w-[90.19px] rotate-[7.77deg] items-start justify-center text-center text-[15.63px] font-medium leading-[23.45px] text-[#bbb]">든든한 지원가</span>
+                </div>
+                <div className="absolute left-[135px] top-[138px] z-20 flex h-[83.68px] w-[99.11px] items-center justify-center">
+                  <div className="relative h-[72.15px] w-[90.19px] rotate-[7.77deg]">
+                    <span className="absolute left-1/2 top-[-4.41px] -translate-x-1/2 text-[60.99px] font-black leading-[91.49px] text-brand">?</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
