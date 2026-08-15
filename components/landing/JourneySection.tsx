@@ -74,7 +74,7 @@ export function JourneySection() {
               <div className="absolute left-[86px] top-[11px]">
                 <h4 className="text-[13px] font-semibold leading-[14.5px] text-[#0a0a0a]">한강공원 플로깅 🌿</h4>
                 <p className="mt-[6px] text-[10.9px] leading-[11.6px] text-[#5e5e5d]">같이 한강 걸으면서 줍깅해요</p>
-                <p className="mt-[3px] text-[10.2px] leading-[11.6px] text-[#5e5e5d]">여의도 · 26.05.16 · <strong className="font-semibold text-[#f76073]">D-4</strong></p>
+                <p className="mt-[3px] text-[10.2px] leading-[11.6px] text-[#5e5e5d]">여의도 · 26.00.00 · <strong className="font-semibold text-[#f76073]">D-4</strong></p>
               </div>
               <span className="absolute bottom-[9px] left-[86px] inline-flex h-[17px] items-center rounded-full border-[0.8px] border-[#fade9e] bg-[#fffbf1] px-[8px] text-[10px] text-[#5e5e5d]">문화</span>
             </div>

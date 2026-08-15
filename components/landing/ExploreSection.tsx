@@ -7,8 +7,7 @@ export function ExploreSection() {
     <section className="py-20 xl:h-[1148px] xl:py-0" data-motion-section="explore">
       <div className="relative mx-auto w-[calc(100%-40px)] max-w-[1170px] xl:h-full">
         <div className="text-center xl:absolute xl:left-1/2 xl:top-[160px] xl:-translate-x-1/2">
-          <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#e8faf4] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="explore-heading">이용 방법</span>
-          <h2 className="mt-[23px] text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap" data-motion="explore-heading">Gather에서 시작하는 방법</h2>
+          <h2 className="text-[30px] font-bold leading-[46px] text-[#101110] sm:text-4xl xl:whitespace-nowrap" data-motion="explore-heading">Gather에서 시작하기</h2>
           <p className="mt-2 text-sm leading-5 text-[#5e5e5d]" data-motion="explore-heading">아직 초기 단계지만, 투명하고 친근하게 여러분께 다가갑니다.</p>
         </div>
 
