@@ -82,22 +82,22 @@ export function Recommendations({ result, type }: RecommendationsProps) {
 
       {state.status === "loading" ? (
         <div className="rounded-[40px] px-3 py-6 sm:px-6 xl:px-10 xl:py-11" style={{ backgroundColor: result.background }} aria-label="추천 공고 불러오는 중" aria-busy="true">
-          <div className="grid gap-6 lg:w-[760px] lg:grid-cols-2 lg:gap-x-11">
+          <div className="grid min-w-0 gap-6 xl:w-[760px] xl:grid-cols-2 xl:gap-x-11">
             {[0, 1, 2, 3].map((item) => <div key={item} className="h-[138px] animate-pulse rounded-xl bg-white/70" />)}
           </div>
         </div>
       ) : null}
 
       {state.status === "success" ? (
-        <div className="flex flex-col items-center gap-10 rounded-[40px] px-3 py-6 sm:px-6 xl:h-[396px] xl:flex-row xl:items-center xl:gap-40 xl:px-10 xl:py-11" style={{ backgroundColor: result.background }}>
-          <div className="grid w-full gap-6 lg:grid-cols-2 xl:w-[760px] xl:grid-cols-[358px_358px] xl:gap-x-11 xl:gap-y-6">
+        <div className="flex min-w-0 flex-col items-center gap-10 rounded-[40px] px-3 py-6 sm:px-6 xl:h-[396px] xl:flex-row xl:items-center xl:gap-40 xl:px-10 xl:py-11" style={{ backgroundColor: result.background }}>
+          <div className="grid min-w-0 w-full gap-6 xl:w-[760px] xl:grid-cols-[358px_358px] xl:gap-x-11 xl:gap-y-6">
             {state.postings.map((posting) => {
               const category = posting.categories[0];
               return (
                 <a
                   key={`${posting.sourceType}:${posting.meetingId ?? "none"}:${posting.id}`}
                   href={getPostingDetailUrl(posting)}
-                  className="group relative min-h-[138px] w-full rounded-xl border border-[#d9d9d9] bg-white p-3 pl-[90px] transition hover:-translate-y-0.5 hover:border-[var(--result-accent)] sm:p-[15px] sm:pl-[118px] xl:h-[138px] xl:w-[358px]"
+                  className="group relative min-h-[138px] min-w-0 w-full overflow-hidden rounded-xl border border-[#d9d9d9] bg-white p-3 pl-[90px] transition hover:-translate-y-0.5 hover:border-[var(--result-accent)] sm:p-[15px] sm:pl-[118px] xl:h-[138px] xl:w-[358px]"
                 >
                   <div
                     className="absolute left-[9px] top-[12px] flex h-[90px] w-[68px] items-center justify-center overflow-hidden rounded-[10px] bg-[#f3f5f1] bg-cover bg-center sm:left-[11px] sm:top-[15px] sm:h-[106px] sm:w-[91px]"
@@ -105,22 +105,24 @@ export function Recommendations({ result, type }: RecommendationsProps) {
                   >
                     {!posting.thumbnailUrl ? <Image src="/assets/brand/gather-mark.svg" alt="" width={56} height={34} /> : null}
                   </div>
-                  <h3 className="truncate text-lg font-semibold leading-5 text-[#0a0a0a]">{posting.title}</h3>
-                  <p className="mt-[7px] truncate text-[15px] leading-4 text-[#5e5e5d]">{posting.organizationName ?? "Gather 봉사"}</p>
-                  <p className="mt-1 truncate text-sm leading-4 text-[#5e5e5d]">
-                    {[posting.regionName ?? posting.place, formatDate(posting.activityStartAt)].filter(Boolean).join(" · ")}
-                  </p>
-                  {category ? (
-                    <span className="mt-[10px] inline-flex h-[23px] items-center rounded-[30px] border px-4 text-sm leading-4 text-[#5e5e5d]" style={{ backgroundColor: result.background, borderColor: result.accent }}>
-                      {categoryLabels[category]}
-                    </span>
-                  ) : null}
+                  <div className="min-w-0">
+                    <h3 className="truncate text-lg font-semibold leading-5 text-[#0a0a0a]">{posting.title}</h3>
+                    <p className="mt-[7px] truncate text-[15px] leading-4 text-[#5e5e5d]">{posting.organizationName ?? "Gather 봉사"}</p>
+                    <p className="mt-1 truncate text-sm leading-4 text-[#5e5e5d]">
+                      {[posting.regionName ?? posting.place, formatDate(posting.activityStartAt)].filter(Boolean).join(" · ")}
+                    </p>
+                    {category ? (
+                      <span className="mt-[10px] inline-flex h-[23px] max-w-full items-center rounded-[30px] border px-4 text-sm leading-4 text-[#5e5e5d]" style={{ backgroundColor: result.background, borderColor: result.accent }}>
+                        {categoryLabels[category]}
+                      </span>
+                    ) : null}
+                  </div>
                 </a>
               );
             })}
           </div>
           <a href={getCategoryExploreUrl(recommendationCategory)} aria-label="추천 카테고리 둘러보기" className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full xl:h-[81px] xl:w-[81px]" style={{ backgroundColor: result.accent }}>
-            <Image src="/assets/icons/result-next.svg" alt="" width={82} height={82} className="h-[64px] w-[64px] max-w-none xl:h-[82px] xl:w-[82px]" />
+            <Image src="/assets/icons/result-next.svg" alt="" width={82} height={82} className="h-[64px] w-[64px] max-w-none -scale-x-100 xl:h-[82px] xl:w-[82px]" />
           </a>
         </div>
       ) : null}

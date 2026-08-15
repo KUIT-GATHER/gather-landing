@@ -5,24 +5,24 @@ export function VolunteerTypeSection() {
   return (
     <section id="volunteer-type" className="scroll-mt-24 bg-[linear-gradient(90deg,#e3f7eb_0%,#f5fbf7_68%,#fff_100%)] py-20 xl:h-[609px] xl:py-0" data-motion-section="volunteer-type">
       <div className="relative mx-auto flex w-[calc(100%-40px)] max-w-[1232px] flex-col gap-14 xl:h-full xl:block">
-        <div className="xl:absolute xl:left-0 xl:top-[133px] xl:h-[347px] xl:w-[610px]">
-          <div className="h-[226px]">
+        <div className="min-w-0 xl:absolute xl:left-0 xl:top-[133px] xl:h-[347px] xl:w-[610px]">
+          <div className="flex flex-col gap-2 xl:block xl:h-[226px]">
             <span className="inline-flex h-[29px] items-center justify-center rounded-[20px] bg-[#f6fffc] px-5 text-sm font-semibold leading-[16.5px] text-brand" data-motion="type-copy">봉사 유형 테스트</span>
-            <div className="mt-2 h-[112px] pt-5">
-              <h2 className="text-4xl font-bold leading-[46px] text-[#0a0a0a]" data-motion="type-copy">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
+            <div className="pt-3 xl:mt-2 xl:h-[112px] xl:pt-5">
+              <h2 className="text-3xl font-bold leading-[1.3] text-[#0a0a0a] sm:text-4xl sm:leading-[46px]" data-motion="type-copy">나는 어떤 방식으로<br /><span className="text-brand">세상을 돕는 사람일까?</span></h2>
             </div>
-            <div className="mt-2 h-[69px] py-2.5">
-              <p className="text-xl leading-[30px] text-[#5e5e5d]" data-motion="type-copy">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<br />추천 활동을 확인해 보세요.</p>
+            <div className="xl:mt-2 xl:h-[69px] xl:py-2.5">
+              <p className="text-base leading-7 text-[#5e5e5d] sm:text-xl sm:leading-[30px]" data-motion="type-copy">몇 가지 질문에 답하고 나에게 잘 맞는 봉사 방식과<span className="hidden xl:inline"><br /></span> 추천 활동을 확인해 보세요.</p>
             </div>
           </div>
-          <div className="mt-0 flex min-h-[61px] flex-wrap items-center gap-x-4 gap-y-3 text-sm text-[#5e5e5d]">
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 text-sm text-[#5e5e5d] xl:mt-0 xl:min-h-[61px]">
             {[
               ["/assets/icons/type-test-clock.svg", "약 60초 소요"],
               ["/assets/icons/type-test-unlock.svg", "로그인 없이 시작"],
               ["/assets/icons/type-test-save.svg", "결과 카드 저장 가능"],
             ].map(([icon, label]) => <span key={label} className="flex items-center gap-3" data-motion="type-copy"><Image src={icon} alt="" width={24} height={24} className="h-6 w-6" />{label}</span>)}
           </div>
-          <Link href="/volunteer-type" className="inline-flex h-[56px] w-[220px] items-center justify-center rounded-[15px] bg-brand text-[15px] font-bold leading-[22px] text-white transition hover:bg-brand-strong" data-motion="type-action">나의 봉사 유형 알아보기 →</Link>
+          <Link href="/volunteer-type" className="mt-8 inline-flex h-[56px] w-[220px] items-center justify-center rounded-[15px] bg-brand text-[15px] font-bold leading-[22px] text-white transition hover:bg-brand-strong xl:mt-0" data-motion="type-action">나의 봉사 유형 알아보기 →</Link>
         </div>
 
         <div className="relative mx-auto h-[367px] w-full max-w-[420px] xl:absolute xl:left-[856px] xl:top-[141px]" aria-hidden="true">

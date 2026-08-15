@@ -12,6 +12,7 @@ export interface VolunteerResultData {
   icon: string;
   iconWidth: number;
   iconHeight: number;
+  volunteerExampleIcon: string;
   decoration: string;
   background: string;
   accent: string;
@@ -31,6 +32,7 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     icon: "/assets/volunteer-type/results/companion.svg",
     iconWidth: 175,
     iconHeight: 162,
+    volunteerExampleIcon: "/assets/icons/result-volunteer-companion.svg",
     decoration: "/assets/volunteer-type/result-decoration-circle.svg",
     background: "#fffbf1",
     accent: "#ffd166",
@@ -56,6 +58,7 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     icon: "/assets/volunteer-type/results/knowledge.svg",
     iconWidth: 162,
     iconHeight: 162,
+    volunteerExampleIcon: "/assets/icons/result-volunteer-knowledge.svg",
     decoration: "/assets/volunteer-type/result-decoration-knowledge.svg",
     background: "#e4f1ff",
     accent: "#79baff",
@@ -81,6 +84,7 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     icon: "/assets/volunteer-type/results/action.svg",
     iconWidth: 138,
     iconHeight: 138,
+    volunteerExampleIcon: "/assets/icons/result-volunteer-action.svg",
     decoration: "/assets/volunteer-type/result-decoration-action.svg",
     background: "#f1fffd",
     accent: "#82d3ca",
@@ -106,6 +110,7 @@ export const volunteerResultData: Record<VolunteerType, VolunteerResultData> = {
     icon: "/assets/volunteer-type/results/support.svg",
     iconWidth: 162,
     iconHeight: 162,
+    volunteerExampleIcon: "/assets/icons/result-volunteer-support.svg",
     decoration: "/assets/volunteer-type/result-decoration-support.svg",
     background: "#fff3ff",
     accent: "#d197d1",
