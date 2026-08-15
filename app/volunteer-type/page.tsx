@@ -29,7 +29,7 @@ export default function VolunteerTypePage() {
           </div>
         </div>
 
-        <div className="mt-4 flex w-full max-w-[722px] flex-col items-center xl:absolute xl:left-[272px] xl:top-[260px] xl:mt-0">
+        <div className="mt-4 flex w-full max-w-[722px] flex-col items-center xl:absolute xl:left-[272px] xl:top-1/2 xl:mt-0 xl:-translate-y-1/2">
           <div className="flex w-full flex-col items-center gap-6 xl:gap-4">
             <h1 className="w-full text-[38px] font-bold leading-normal text-[#0a0a0a] sm:text-[44px] xl:w-[457px] xl:text-[42px] xl:leading-[1.3]">
               나는 어떤 방식으로<br />
@@ -44,7 +44,6 @@ export default function VolunteerTypePage() {
           </ul>
           <div className="mt-12 w-full max-w-[525px] xl:mt-7 xl:max-w-[400px]">
             <StartTestButton />
-            <p className="mt-5 text-xl leading-normal text-[#545454] xl:mt-3 xl:text-base">약 60초 소요</p>
           </div>
         </div>
       </section>
