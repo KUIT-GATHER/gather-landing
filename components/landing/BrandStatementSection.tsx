@@ -18,13 +18,29 @@ export function BrandStatementSection() {
             </h2>
             <span className="h-[5px] w-14 rounded-full bg-brand" aria-hidden="true" data-motion="brand-bar" />
           </div>
-          <p className="text-lg leading-8 text-[#5e5e5d] sm:text-2xl sm:leading-normal" data-motion="brand-description">
-            Gather는 공고를 보여주는 데서 멈추지 않습니다.<br />
-            관심 있는 봉사를 발견하고, 함께할 사람을 만나고,<br />
-            나만의 참여 경험을 쌓아갈 수 있도록 돕습니다.
+          <p
+            className="text-lg leading-8 text-[#5e5e5d] sm:text-2xl sm:leading-normal"
+            data-motion="brand-description"
+          >
+            Gather는 공고를 보여주는 데서 멈추지 않습니다.
+            <br className="hidden sm:block" />
+            {" "}관심 있는 봉사를 발견하고, 함께할 사람을 만나고,
+            <br className="hidden sm:block" />
+            {" "}나만의 참여 경험을 쌓아갈 수 있도록 돕습니다.
           </p>
         </div>
-        <div className="mt-[60px] flex flex-wrap justify-center gap-4">
+        <div className="mt-[60px] grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center">
+          {brandChips.map(([item, style]) => (
+            <span
+              key={item}
+              className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`}
+              data-motion="brand-chip"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+     <div className="mt-[60px] grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center">
           {brandChips.map(([item, style]) => (
             <span key={item} className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`} data-motion="brand-chip">
               {item}
