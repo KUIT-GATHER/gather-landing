@@ -40,13 +40,6 @@ export function BrandStatementSection() {
             </span>
           ))}
         </div>
-     <div className="mt-[60px] grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center">
-          {brandChips.map(([item, style]) => (
-            <span key={item} className={`inline-flex h-11 w-[75px] items-center justify-center rounded-full border text-lg font-semibold leading-[22px] ${style}`} data-motion="brand-chip">
-              {item}
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );
