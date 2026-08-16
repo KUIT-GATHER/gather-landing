@@ -42,7 +42,7 @@ export function DifferenceSection() {
             {differenceItems.map((item, index) => <li key={item} className={`flex items-start gap-3 ${index === 0 ? "h-auto xl:h-[22px]" : "h-auto pt-2 xl:h-[30px]"}`} data-motion="difference-item"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e2f8ee] font-bold text-[11px] leading-[16.5px] text-brand">✓</span>{item}</li>)}
           </ul>
         </div>
-        <div className="rounded-2xl border border-brand p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]" data-motion="difference-journey">
+        <div className="w-full min-w-0 rounded-2xl border border-brand p-[33px] xl:absolute xl:right-0 xl:top-[207px] xl:h-[303px] xl:w-[498px]" data-motion="difference-journey">
           <h3 className="text-center text-lg font-semibold leading-6 text-[#101110]">봉사 경험의 전체 여정</h3>
           <div className="mt-6 grid grid-cols-4 text-center">
             {journeyItems.map(([label, icon]) => (

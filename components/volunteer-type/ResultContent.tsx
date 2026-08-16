@@ -92,7 +92,7 @@ export function ResultContent({
       </section>
 
       <section className={`flex flex-col gap-8 rounded-[20px] bg-white ${sectionPadding}`}>
-        <ResultSectionHeading icon="/assets/icons/result-volunteer.svg" title="대표 봉사 예시" exportMode={exportMode} />
+        <ResultSectionHeading icon={result.volunteerExampleIcon} title="대표 봉사 예시" exportMode={exportMode} />
         <ActivityList items={result.examples} result={result} exportMode={exportMode} />
       </section>
 

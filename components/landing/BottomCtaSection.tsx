@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export function BottomCtaSection() {
   return (
     <section className="bg-[#fafaf8] py-16 xl:h-[579px] xl:py-[90px]" data-motion-section="bottom-cta">
-      <div className="mx-auto flex min-h-[399px] w-[calc(100%-40px)] max-w-[949px] flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(114.284deg,#fafafa_32.074%,#d4fddc_102.25%)] px-5 py-12 text-center sm:px-10 xl:py-0" data-motion="bottom-cta-panel">
+      <div className="mx-auto flex min-h-[399px] w-[calc(100%-40px)] max-w-[949px] flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(114.284deg,#effcf1_0%,#dcfde2_100%)] px-5 py-12 text-center sm:px-10 xl:py-0" data-motion="bottom-cta-panel">
         <div className="flex flex-col items-center gap-9">
           <div className="flex h-[46px] items-center gap-2" aria-hidden="true">
             <Image src="/assets/icons/cta-discover.svg" alt="" width={46} height={46} className="h-[46px] w-[46px]" data-motion="bottom-cta-icon" />
