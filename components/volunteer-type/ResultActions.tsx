@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { VolunteerType } from "@/data/volunteer-test";
 import { resetVolunteerTestSession } from "@/lib/volunteer-test";
@@ -11,10 +11,41 @@ type ResultActionsProps = {
   type: VolunteerType;
 };
 
+async function waitForExportImages(node: HTMLElement) {
+  await Promise.all(
+    Array.from(node.querySelectorAll("img")).map(async (image) => {
+      const source = image.currentSrc || image.src || "(empty src)";
+      image.loading = "eager";
+
+      if (image.complete && image.naturalWidth === 0) {
+        throw new Error(`Export image failed to load: ${source}`);
+      }
+
+      try {
+        if (typeof image.decode === "function") {
+          await image.decode();
+        } else if (!image.complete) {
+          await new Promise<void>((resolve, reject) => {
+            image.addEventListener("load", () => resolve(), { once: true });
+            image.addEventListener("error", () => reject(new Error(`Export image failed to load: ${source}`)), { once: true });
+          });
+        }
+      } catch (error) {
+        throw new Error(`Export image failed to decode: ${source}`, { cause: error });
+      }
+
+      if (!image.complete || image.naturalWidth === 0) {
+        throw new Error(`Export image is not ready: ${source}`);
+      }
+    }),
+  );
+}
+
 export function ResultActions({ type }: ResultActionsProps) {
   const router = useRouter();
   const [toast, setToast] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const isSavingRef = useRef(false);
 
   useEffect(() => {
     if (!toast) return;
@@ -32,7 +63,7 @@ export function ResultActions({ type }: ResultActionsProps) {
   };
 
   const saveResult = async () => {
-    if (isSaving) return;
+    if (isSaving || isSavingRef.current) return;
 
     const node = document.getElementById(`result-export-${type}`);
     if (!node) {
@@ -40,30 +71,58 @@ export function ResultActions({ type }: ResultActionsProps) {
       return;
     }
 
+    isSavingRef.current = true;
     setIsSaving(true);
+    let stage = "font ready";
+    let exportSize = { width: 0, height: 0 };
+
     try {
       await document.fonts.ready;
-      await Promise.all(
-        Array.from(node.querySelectorAll("img")).map((image) =>
-          image.complete ? Promise.resolve() : image.decode(),
-        ),
-      );
-      const { getFontEmbedCSS, toPng } = await import("html-to-image");
-      const fontEmbedCSS = await getFontEmbedCSS(node);
-      const dataUrl = await toPng(node, {
+      stage = "image decode";
+      await waitForExportImages(node);
+
+      stage = "html-to-image import";
+      const { toBlob } = await import("html-to-image");
+
+      stage = "export DOM size";
+      exportSize = { width: node.scrollWidth, height: node.scrollHeight };
+      if (!exportSize.width || !exportSize.height) {
+        throw new Error(`Export DOM has invalid size: ${exportSize.width}x${exportSize.height}`);
+      }
+
+      stage = "DOM capture / blob generation";
+      const blob = await toBlob(node, {
         cacheBust: true,
-        pixelRatio: 2,
+        width: exportSize.width,
+        height: exportSize.height,
+        pixelRatio: 1,
         backgroundColor: "#fafaf8",
-        fontEmbedCSS,
+        preferredFontFormat: "woff2",
       });
-      const link = document.createElement("a");
-      link.download = `gather-volunteer-type-${type}.png`;
-      link.href = dataUrl;
-      link.click();
+
+      if (!blob || blob.size === 0) {
+        throw new Error("html-to-image returned an empty blob");
+      }
+
+      stage = "download";
+      const objectUrl = URL.createObjectURL(blob);
+      try {
+        const link = document.createElement("a");
+        link.download = `gather-volunteer-type-${type}.png`;
+        link.href = objectUrl;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } finally {
+        window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1_000);
+      }
+
       setToast("결과 카드를 저장했어요.");
-    } catch {
+    } catch (error) {
+      console.error("[result-card-save]", { stage, error, exportSize });
       setToast("결과 카드를 저장하지 못했어요. 다시 시도해 주세요.");
     } finally {
+      isSavingRef.current = false;
       setIsSaving(false);
     }
   };
