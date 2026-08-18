@@ -31,8 +31,8 @@ export function ResultPage({ type, matchCount }: ResultPageProps) {
         <ResultActions type={type} />
       </div>
 
-      <div aria-hidden="true" className="fixed left-[-10000px] top-0 w-[1233px] bg-background">
-        <div id={`result-export-${type}`} className="h-[1907px] w-[1233px] overflow-hidden bg-background">
+      <div aria-hidden="true" className="fixed left-[-10000px] top-0 w-[1080px] bg-background">
+        <div id={`result-export-${type}`} className="w-[1080px] overflow-visible bg-background">
           <ResultSummary result={result} exportMode />
           <ResultContent result={result} matchCount={matchCount} exportMode includeCampaigns={false} />
         </div>
