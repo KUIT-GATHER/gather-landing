@@ -132,11 +132,11 @@ export function VolunteerTest() {
           ))}
         </div>
 
-        <h1 className="mx-auto mt-10 text-center text-[30px] font-bold leading-[41.6px] text-[#101110] sm:text-4xl xl:absolute xl:left-1/2 xl:top-[110px] xl:mt-0 xl:-translate-x-1/2 xl:whitespace-nowrap">
+        <h1 className="mx-auto mt-8 text-center text-2xl font-bold leading-[1.4] text-[#101110] md:mt-10 md:text-4xl xl:absolute xl:left-1/2 xl:top-[110px] xl:mt-0 xl:-translate-x-1/2 xl:whitespace-nowrap">
           {question.title}
         </h1>
 
-        <div className="mx-auto mt-12 grid w-full max-w-[660px] grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-6 xl:absolute xl:left-1/2 xl:top-[248px] xl:mt-0 xl:-translate-x-1/2">
+        <div className="mx-auto mt-8 grid w-full max-w-[660px] grid-cols-2 gap-3 md:mt-12 md:gap-x-8 md:gap-y-6 xl:absolute xl:left-1/2 xl:top-[248px] xl:mt-0 xl:-translate-x-1/2">
           {orderedOptions.map((option) => {
             const selected = option.id === selectedOptionId;
             const iconSize = optionIconSizes[option.id] ?? { width: 72, height: 72 };
@@ -147,7 +147,7 @@ export function VolunteerTest() {
                 onClick={() => selectOption(option.id)}
                 disabled={transitionLocked}
                 aria-pressed={selected}
-                className={`flex h-[209px] w-full flex-col items-center justify-center gap-6 rounded-[20px] border-2 p-11 text-center transition md:w-[314px] ${
+                className={`flex min-h-[164px] w-full flex-col items-center justify-center gap-3 rounded-[20px] border-2 p-3 text-center transition md:h-[209px] md:min-h-0 md:w-[314px] md:gap-6 md:p-11 ${
                   selected
                     ? "border-brand bg-[#f3fffa]"
                     : "border-[#d9d9d9] bg-white hover:border-[#9bdfc2] hover:bg-[#fbfffd]"
@@ -158,11 +158,10 @@ export function VolunteerTest() {
                   alt=""
                   width={iconSize.width}
                   height={iconSize.height}
-                  className="shrink-0 object-contain"
-                  style={{ width: iconSize.width, height: iconSize.height }}
+                  className="size-12 shrink-0 object-contain md:h-auto md:w-auto"
                   loading={session.currentStep === 0 ? "eager" : "lazy"}
                 />
-                <span className="max-w-[226px] text-lg font-semibold leading-normal tracking-[-0.03em]">
+                <span className="max-w-[226px] text-center text-sm font-semibold leading-snug tracking-[-0.03em] md:text-lg md:leading-normal">
                   {option.label}
                 </span>
               </button>
