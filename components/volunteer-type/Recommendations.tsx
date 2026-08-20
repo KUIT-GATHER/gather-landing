@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { siteConfig } from "@/config/site";
 import type { VolunteerResultData } from "@/data/volunteer-results";
 import type { VolunteerType } from "@/data/volunteer-test";
 import {
   createRecommendationUrl,
-  getCategoryExploreUrl,
   getPostingDetailUrl,
   isPostingListResponse,
   recommendationCategoryByType,
@@ -121,7 +121,7 @@ export function Recommendations({ result, type }: RecommendationsProps) {
               );
             })}
           </div>
-          <a href={getCategoryExploreUrl(recommendationCategory)} aria-label="추천 카테고리 둘러보기" className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full xl:h-[81px] xl:w-[81px]" style={{ backgroundColor: result.accent }}>
+          <a href={siteConfig.gatherWebUrl} aria-label="추천 카테고리 둘러보기" className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full xl:h-[81px] xl:w-[81px]" style={{ backgroundColor: result.accent }}>
             <Image src="/assets/icons/result-next.svg" alt="" width={82} height={82} className="h-[64px] w-[64px] max-w-none -scale-x-100 xl:h-[82px] xl:w-[82px]" />
           </a>
         </div>
@@ -135,7 +135,7 @@ export function Recommendations({ result, type }: RecommendationsProps) {
               <p className="text-xl font-medium leading-normal tracking-[-0.03em] text-[#0a0a0a] sm:text-2xl xl:text-[26px]">지금은 이 유형과 정확히 맞는 모집 공고가 없어요.</p>
               <p className="text-base leading-normal text-[#5e5e5d] sm:text-xl xl:text-2xl">다른 추천 카테고리도 둘러보세요.</p>
             </div>
-            <a href={getCategoryExploreUrl(recommendationCategory)} className="inline-flex min-h-[56px] items-center gap-3 rounded-[10px] px-6 py-4 text-base font-semibold leading-normal text-[#fafaf8] sm:text-lg xl:text-xl" style={{ backgroundColor: result.accent }}>
+            <a href={siteConfig.gatherWebUrl} className="inline-flex min-h-[56px] items-center gap-3 rounded-[10px] px-6 py-4 text-base font-semibold leading-normal text-[#fafaf8] sm:text-lg xl:text-xl" style={{ backgroundColor: result.accent }}>
               추천 카테고리 둘러보기
               <span aria-hidden="true">→</span>
             </a>
